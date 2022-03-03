@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import { api } from "../App";
 
 const Test = () => {
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({});
 
     useEffect(() => {
-        axios.get('/test')
-            .then(res => {
-                setData(res)
-            })
+        // async function fetchTestData() {
+        //     const response = await axios.get('http://localhost:5000/test/api');
+        //     console.log(response);
+        //     const responseData = await response.data;
+        //     console.log(responseData);
+        //     setData({...responseData});
+        //     console.log(data);
+        // }
+
+        // fetchTestData();
+
+        api.get('/test/api')
+            .then(res => setData({...res.data}));
     }, []);
 
     return (
         <div>
-            {data}
+            {data.message}
+            In Testing component
         </div>
     );
 }
