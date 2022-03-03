@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 
 const Test = () => {
+
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        axios.get('/test')
+            .then(res => {
+                setData(res)
+            })
+    }, []);
+
     return (
         <div>
-            <h1>Testing Page</h1>
+            {data}
         </div>
     );
 }
