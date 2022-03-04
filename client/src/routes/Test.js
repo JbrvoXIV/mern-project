@@ -6,25 +6,19 @@ const Test = () => {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        // async function fetchTestData() {
-        //     const response = await axios.get('http://localhost:5000/test/api');
-        //     console.log(response);
-        //     const responseData = await response.data;
-        //     console.log(responseData);
-        //     setData({...responseData});
-        //     console.log(data);
-        // }
+        async function fetchTestData() {
+            const response = await api.get('/test/api');
+            const responseData = await response.data;
+            setData({...responseData});
+        }
 
-        // fetchTestData();
-
-        api.get('/test/api')
-            .then(res => setData({...res.data}));
+        fetchTestData();
     }, []);
 
     return (
         <div>
-            {data.message}
-            In Testing component
+            <h1>In Testing component</h1>
+            <p>{data.message}</p>
         </div>
     );
 }
