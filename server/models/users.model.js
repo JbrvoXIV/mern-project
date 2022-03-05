@@ -4,8 +4,7 @@ const { isEmail } = require('validator');
 const usersSchema = new mongoose.Schema({
     name: {
         type: String,
-        trim: true,
-        match: [/^[a-zA-Z]{3,}\s{1}[a-zA-Z]{3,}$`/, 'Incorrect name format'],
+        match: [/^[a-zA-Z]{3,}\s{1}[a-zA-Z]{3,}$/, 'Incorrect name format'],
         required: true
     },
     email: {
