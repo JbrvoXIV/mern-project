@@ -12,7 +12,7 @@ const getUsersController = async (req, res) => {
         }
     } else {
         try {
-            const firstUser = await Users.findOne();
+            const firstUser = await Users.find().limit(5);
             res.json(firstUser);
         } catch (error) {
             res.status(500).json({ success: false, message: error.message });

@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../App";
+import { Container } from "./styles/Global";
+import { ListStyled } from "./styles/List.styled";
 
 const Test = () => {
 
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         async function fetchTestData() {
-            const response = await api.get('/test/api');
+            const response = await api.get('/users/api');
             const responseData = await response.data;
-            setData({...responseData});
+            setData([...responseData]);
         }
 
         fetchTestData();
     }, []);
 
+    const dataList = data.map((user, index) => {
+        return <li key={index}>User: {user.name} and Email: {user.email}</li>
+    })
+
     return (
-        <div>
+        <Container>
             <h1>In Testing component</h1>
-            <p>{data.message}</p>
-        </div>
+            <ListStyled>
+                {dataList}
+            </ListStyled>
+        </Container>
     );
 }
 
