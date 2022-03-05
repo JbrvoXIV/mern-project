@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const db = require('../../server.js');
 const { isEmail } = require('validator');
-
 
 const usersSchema = new mongoose.Schema({
     name: {
@@ -21,6 +19,5 @@ const usersSchema = new mongoose.Schema({
     }
 });
 
-const Users = mongoose.model('Users', usersSchema, 'users');
+module.exports = mongoose.model('Users', usersSchema, 'users');
 
-// module.exports = Users;
