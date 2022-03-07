@@ -11,9 +11,9 @@ const {
 
 const parseName = (req, res, next) => {
     
-    if(req.query.first && req.query.last) {
-        const firstName = req.query.first.charAt(0).toUpperCase() + req.query.first.slice(1);
-        const lastName = req.query.last.charAt(0).toUpperCase() + req.query.last.slice(1);
+    if(req.query.fname && req.query.lname) {
+        const firstName = req.query.fname.charAt(0).toUpperCase() + req.query.fname.slice(1);
+        const lastName = req.query.lname.charAt(0).toUpperCase() + req.query.lname.slice(1);
         const fullName = `${firstName} ${lastName}`;
         
         res.fullName = fullName;
