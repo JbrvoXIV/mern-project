@@ -1,34 +1,54 @@
 import React, { useState } from 'react';
 import { api } from '../App';
+import DataView from './DataView';
+
 import { Container, Flex } from "../styles/Global";
 
-const Test = () => {
+const Search = () => {
 
     const [data, setData] = useState({
         fname: '',
         lname: ''
     });
+
     const [responseData, setResponseData] = useState({
         name: '',
         email: '',
         password: ''
-    })
+    });
+
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     const submitData = e => {        
         e.preventDefault();
         async function getData() {
-            const response = await api.get('/users/api', {
-                params: {
-                    fname: data.fname.toLowerCase(),
-                    lname: data.lname.toLowerCase()
+
+            try {
+                const response = await api.get('/users/api', {
+                    params: {
+                        fname: data.fname.toLowerCase(),
+                        lname: data.lname.toLowerCase()
+                    }
+                });
+    
+                const requestedData = await response.data;
+                setFormSubmitted(true);
+
+                if(requestedData[0]) {
+                    return setResponseData({
+                        name: requestedData[0].name,
+                        email: requestedData[0].email,
+                        password: requestedData[0].password
+                    });
                 }
-            });
-            const requestedData = await response.data[0];
-            setResponseData({
-                name: requestedData.name,
-                email: requestedData.email,
-                password: requestedData.password
-            });
+
+                return setResponseData(oldData => ({
+                    ...oldData,
+                    name: undefined
+                }));
+            } catch (error) {
+                console.log(error.message);
+            }
         }
         getData();
     }
@@ -45,12 +65,13 @@ const Test = () => {
         <Container>
             <Flex>
                 <h1>In Testing component</h1>
-                <form onSubmit={submitData} method='get' target='_blank'>
+                <form onSubmit={submitData} autoComplete='off'>
                     <label htmlFor='fname'>First Name:</label>
                     <input
                         onChange={handleChange}
                         type='text'
                         id='fname'
+                        required={true}
                         value={data.fname}
                     /><br />
                     <label htmlFor='lname'>Last Name:</label>
@@ -58,6 +79,7 @@ const Test = () => {
                         onChange={handleChange}
                         type='text'
                         id='lname'
+                        required={true}
                         value={data.lname}
                     /><br />
                     <input 
@@ -65,14 +87,10 @@ const Test = () => {
                         value='Submit'
                     />
                 </form>
-                <div style={{margin: 0, border: '2px solid black', minWidth: '100px', textAlign: 'center'}}>
-                    {responseData.name}<br />
-                    {responseData.email}<br />
-                    {responseData.password}<br />
-                </div>
+                <DataView data={responseData} submitted={formSubmitted}/>
             </Flex>
         </Container>
     );
 }
 
-export default Test;
+export default Search;

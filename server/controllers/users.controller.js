@@ -6,17 +6,17 @@ const getUsersController = async (req, res) => {
     if(res.fullName) {
         try {
             const requestedUser = await Users.find({ name: res.fullName });
-            res.json(requestedUser);
+            return res.json(requestedUser);
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            return res.status(500).json({ message: error.message });
         }
-    } else {
-        try {
-            const firstUser = await Users.find().limit(5);
-            res.json(firstUser);
-        } catch (error) {
-            res.status(500).json({ success: false, message: error.message });
-        }
+    } 
+        
+    try {
+        const firstUser = await Users.findOne();
+        return res.json(firstUser);
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error.message });
     }
 }
 
