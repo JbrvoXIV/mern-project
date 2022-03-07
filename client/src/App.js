@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Container } from './routes/styles/Global';
+
+import { Container, Flex, GlobalStyle } from './styles/Global';
 
 export const api = axios.create({
     baseURL: 'http://localhost:5000'
@@ -10,9 +11,17 @@ export const api = axios.create({
 const App = () => {
 
     return (
-        <Container>
-            <Link to='/test'>Testing</Link>
-        </Container>
+        <>
+            <GlobalStyle />
+            <Container>
+                <Flex >
+                    <Link to='/search'>Search the database</Link>
+                    <Link to='/create'>Create a user</Link>
+                    <Link to='/update'>Update a current user</Link>
+                    <Link to='/delete'>Delete a user</Link>
+                </Flex>
+            </Container>
+        </>
     );
 }
 

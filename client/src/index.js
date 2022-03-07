@@ -1,5 +1,5 @@
 import App from './App';
-import Test from './routes/Test';
+import Search from './routes/Search.js';
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -11,7 +11,7 @@ render(
     <BrowserRouter>
         <Routes>
             <Route path='/' element={ <App /> } />
-            <Route path='test' element={ <Test /> } />
+            <Route path='/search' element={ <Search /> } />
         </Routes>
     </BrowserRouter>,
     root
