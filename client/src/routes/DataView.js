@@ -1,4 +1,5 @@
 import React from 'react';
+import { DataStyled } from '../styles/Data.styled.js';
 
 const DataView = (props) => {
     
@@ -23,9 +24,9 @@ const DataView = (props) => {
     }
 
     return (
-        <section>
+        <DataStyled>
             {displayData()}
-        </section>
+        </DataStyled>
     );
 }
 

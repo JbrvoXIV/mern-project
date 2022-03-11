@@ -2,19 +2,23 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     html,
-    body,
     #root {
         height: 100vh;
         width: 100%;
         margin: 0;
         padding: 0;
     }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
 `
 
 export const Container = styled.div`
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     width: 1000px;
     max-width: 100%;
     height: 100%;
@@ -27,4 +31,42 @@ export const Flex = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+`
+
+export const HeaderStyled = styled.header`
+    background-color: salmon;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    margin-bottom: 10px;
+
+    h1 {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 0;
+        padding: 20px 0;
+    }
+`
+
+export const FormStyled = styled.form`
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    label {
+        margin-right: 5px;
+    }
+`
+
+export const InputStyled = styled.input`
+    display: block;
+    height: 20px;
+    width: 300px;
+
+    &[type="submit"] {
+        height: 30px;
+        width: 100px;
+        margin: 0 auto;
+        margin-top: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 500;
+    }
 `

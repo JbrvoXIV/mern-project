@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { api } from '../App';
 import DataView from './DataView';
 
-import { Container, Flex } from "../styles/Global";
+import { Container, Flex, FormStyled, HeaderStyled, InputStyled } from "../styles/Global";
 
 const Search = () => {
 
@@ -58,29 +58,31 @@ const Search = () => {
     return (
         <Container>
             <Flex>
-                <h1>In Testing component</h1>
-                <form onSubmit={submitData} autoComplete='off'>
+                <HeaderStyled>
+                    <h1>Search For User</h1>
+                </HeaderStyled>
+                <FormStyled onSubmit={submitData} autoComplete='off' >
                     <label htmlFor='fname'>First Name:</label>
-                    <input
+                    <InputStyled
                         onChange={handleChange}
                         type='text'
                         id='fname'
                         required={true}
                         value={data.fname}
-                    /><br />
+                    />
                     <label htmlFor='lname'>Last Name:</label>
-                    <input
+                    <InputStyled
                         onChange={handleChange}
                         type='text'
                         id='lname'
                         required={true}
                         value={data.lname}
-                    /><br />
-                    <input 
+                    />
+                    <InputStyled 
                         type='submit'
                         value='Submit'
                     />
-                </form>
+                </FormStyled>
                 {formSubmitted && <DataView data={responseData} />}
             </Flex>
         </Container>
