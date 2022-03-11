@@ -12,11 +12,22 @@ const usersSchema = new mongoose.Schema({
         validate: [isEmail, 'Incorrect email format'],
         required: true
     },
-    password: {
+    favMovie: {
+        type: String,
+        required: true
+    },
+    favFood: {
+        type: String,
+        required: true
+    },
+    favColor: {
+        type: String,
+        required: true
+    },
+    favHobby: {
         type: String,
         required: true
     }
 });
 
 module.exports = mongoose.model('Users', usersSchema, 'users');
-

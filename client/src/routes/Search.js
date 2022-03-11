@@ -14,7 +14,10 @@ const Search = () => {
     const [responseData, setResponseData] = useState({
         name: '',
         email: '',
-        password: ''
+        favMovie: '',
+        favFood: '',
+        favColor: '',
+        favHobby: ''
     });
 
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -36,7 +39,10 @@ const Search = () => {
                     return setResponseData({
                         name: requestedData.name,
                         email: requestedData.email,
-                        password: requestedData.password
+                        favMovie: requestedData.favMovie,
+                        favFood: requestedData.favFood,
+                        favColor: requestedData.favColor,
+                        favHobby: requestedData.favHobby
                     });
                 }
             } catch (error) {
@@ -83,7 +89,7 @@ const Search = () => {
                         value='Submit'
                     />
                 </FormStyled>
-                {formSubmitted && <DataView data={responseData} />}
+                {formSubmitted && <DataView {...responseData} />}
             </Flex>
         </Container>
     );

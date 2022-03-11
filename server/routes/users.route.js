@@ -21,10 +21,6 @@ const parseName = (req, res, next) => {
     if(req.query.email) {
         res.email = req.query.email;
     }
-    if(req.query.password) {
-        res.password = req.query.password;
-    }
-    
     next();
 }
 

@@ -1,11 +1,7 @@
 import React from 'react';
 import { DataStyled } from '../styles/Data.styled.js';
 
-const DataView = (props) => {
-    
-    const name = props.data.name;
-    const email = props.data.email;
-    const password = props.data.password;
+const DataView = ({ name, email, favMovie, favFood, favColor, favHobby }) => {
 
     const displayData = () => {
         if(name) {
@@ -13,7 +9,10 @@ const DataView = (props) => {
                 <ul>
                     <li>NAME: {name}</li>
                     <li>EMAIL: {email}</li>
-                    <li>PASSWORD: {password}</li>
+                    <li>FAVORITE MOVIE: {favMovie}</li>
+                    <li>FAVORITE FOOD: {favFood}</li>
+                    <li>FAVORITE COLOR: {favColor}</li>
+                    <li>FAVORITE HOBBY: {favHobby}</li>
                 </ul>
             )
         } else {

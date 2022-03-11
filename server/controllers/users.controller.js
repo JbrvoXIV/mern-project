@@ -20,7 +20,10 @@ const createUsersController = async (req, res) => {
         const newUser = await Users.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            favMovie: req.body.favMovie,
+            favFood: req.body.favFood,
+            favColor: req.body.favColor,
+            favHobby: req.body.favHobby
         });
         res.status(201).json(newUser);
     } catch (error) {
