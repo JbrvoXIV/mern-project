@@ -30,24 +30,18 @@ const Search = () => {
                         lname: data.lname.toLowerCase()
                     }
                 });
-    
                 const requestedData = await response.data;
                 setFormSubmitted(true);
-
-                if(requestedData[0]) {
+                if(requestedData) {
                     return setResponseData({
-                        name: requestedData[0].name,
-                        email: requestedData[0].email,
-                        password: requestedData[0].password
+                        name: requestedData.name,
+                        email: requestedData.email,
+                        password: requestedData.password
                     });
                 }
-
-                return setResponseData(oldData => ({
-                    ...oldData,
-                    name: undefined
-                }));
             } catch (error) {
                 console.log(error.message);
+                setResponseData({ name: null });
             }
         }
         getData();
@@ -87,7 +81,7 @@ const Search = () => {
                         value='Submit'
                     />
                 </form>
-                <DataView data={responseData} submitted={formSubmitted}/>
+                {formSubmitted && <DataView data={responseData} />}
             </Flex>
         </Container>
     );
