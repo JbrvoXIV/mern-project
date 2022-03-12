@@ -1,20 +1,17 @@
 import styled from "styled-components";
 
 export const DataStyled = styled.section`
-    
-    margin-top: 10px;
-    font-size: 1.2em;
-    border: 2px solid lightgrey;
-
-    ul {
-        margin: 0;
-        padding: 5px;
+    table {
+        margin-top: 20px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        
+        th, td {
+            padding: 10px;
+            border: 1px solid white;
+            background-color: #96D4D4;
+            min-width: 150px;
+            text-align: center;
+        }
     }
-
-    li {
-        list-style: none;
-        margin-bottom: 5px;
-        border-bottom: 1px solid black;
-    }
-
 `

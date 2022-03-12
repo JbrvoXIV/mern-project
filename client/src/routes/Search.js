@@ -47,7 +47,7 @@ const Search = () => {
                 }
             } catch (error) {
                 console.log(error.message);
-                setResponseData({ name: null });
+                return setResponseData({ name: null });
             }
         }
         getData();
@@ -63,10 +63,10 @@ const Search = () => {
 
     return (
         <Container>
+            <HeaderStyled>
+                <h1>Search Database</h1>
+            </HeaderStyled>
             <Flex>
-                <HeaderStyled>
-                    <h1>Search For User</h1>
-                </HeaderStyled>
                 <FormStyled onSubmit={submitData} autoComplete='off' >
                     <label htmlFor='fname'>First Name:</label>
                     <InputStyled

@@ -1,7 +1,10 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-    html,
+    * {
+        box-sizing: border-box;
+    }
+
     #root {
         height: 100vh;
         width: 100%;
@@ -9,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
+    html,
     body {
         margin: 0;
         padding: 0;
@@ -16,13 +20,14 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
+    flex-direction: column;
     width: 1000px;
     max-width: 100%;
     height: 100%;
-    padding: 0 20px;
+    padding: 0;
     margin: 0 auto;
 `
 
@@ -34,11 +39,12 @@ export const Flex = styled.div`
 `
 
 export const HeaderStyled = styled.header`
+
     background-color: salmon;
     width: 100%;
     border-radius: 0 0 10px 10px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     h1 {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
