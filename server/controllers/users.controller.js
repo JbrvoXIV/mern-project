@@ -20,6 +20,7 @@ const createUsersController = async (req, res) => {
         const newUser = await Users.create({
             name: req.body.name,
             email: req.body.email,
+            birthday: req.body.birthday,
             favMovie: req.body.favMovie,
             favFood: req.body.favFood,
             favColor: req.body.favColor,

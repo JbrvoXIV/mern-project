@@ -14,6 +14,7 @@ const Search = () => {
     const [responseData, setResponseData] = useState({
         name: '',
         email: '',
+        birthday: '',
         favMovie: '',
         favFood: '',
         favColor: '',
@@ -24,8 +25,9 @@ const Search = () => {
 
     const submitData = e => {        
         e.preventDefault();
-        async function getData() {
+        setFormSubmitted(true);
 
+        async function getData() {
             try {
                 const response = await api.get('/users/api', {
                     params: {
@@ -34,11 +36,11 @@ const Search = () => {
                     }
                 });
                 const requestedData = await response.data;
-                setFormSubmitted(true);
                 if(requestedData) {
                     return setResponseData({
                         name: requestedData.name,
                         email: requestedData.email,
+                        birthday: requestedData.birthday,
                         favMovie: requestedData.favMovie,
                         favFood: requestedData.favFood,
                         favColor: requestedData.favColor,
@@ -68,7 +70,7 @@ const Search = () => {
             </HeaderStyled>
             <Flex>
                 <FormStyled onSubmit={submitData} autoComplete='off' >
-                    <label htmlFor='fname'>First Name:</label>
+                    <label htmlFor='fname'>FIRST NAME</label>
                     <InputStyled
                         onChange={handleChange}
                         type='text'
@@ -76,7 +78,7 @@ const Search = () => {
                         required={true}
                         value={data.fname}
                     />
-                    <label htmlFor='lname'>Last Name:</label>
+                    <label htmlFor='lname'>LAST NAME</label>
                     <InputStyled
                         onChange={handleChange}
                         type='text'

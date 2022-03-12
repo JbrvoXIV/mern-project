@@ -1,7 +1,7 @@
 import React from 'react';
 import { DataStyled } from '../styles/Data.styled.js';
 
-const DataView = ({ name, email, favMovie, favFood, favColor, favHobby }) => {
+const DataView = ({ name, email, birthday, favMovie, favFood, favColor, favHobby }) => {
 
     const displayData = () => {
         if(name) {
@@ -11,6 +11,7 @@ const DataView = ({ name, email, favMovie, favFood, favColor, favHobby }) => {
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Birthday</th>
                             <th>Favorite Movie</th>
                             <th>Favorite Food</th>
                             <th>Favorite Color</th>
@@ -21,6 +22,7 @@ const DataView = ({ name, email, favMovie, favFood, favColor, favHobby }) => {
                         <tr>
                             <td>{name}</td>
                             <td>{email}</td>
+                            <td>{birthday.split('T')[0]}</td>
                             <td>{favMovie}</td>
                             <td>{favFood}</td>
                             <td>{favColor}</td>
@@ -31,7 +33,7 @@ const DataView = ({ name, email, favMovie, favFood, favColor, favHobby }) => {
             )
         } else {
             return (
-                <p>User Not Found</p>
+                <p>USER NOT FOUND</p>
             )
         }
     }

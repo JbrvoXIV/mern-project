@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         margin: 0;
         padding: 0;
+        background-color: rgb(245, 245, 245);
     }
 
     html,
@@ -20,10 +21,6 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     width: 1000px;
     max-width: 100%;
     height: 100%;
@@ -40,7 +37,7 @@ export const Flex = styled.div`
 
 export const HeaderStyled = styled.header`
 
-    background-color: salmon;
+    background-color: #D49696;
     width: 100%;
     border-radius: 0 0 10px 10px;
     text-align: center;
@@ -50,6 +47,7 @@ export const HeaderStyled = styled.header`
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         margin: 0;
         padding: 20px 0;
+        color: white;
     }
 `
 
@@ -58,21 +56,37 @@ export const FormStyled = styled.form`
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     label {
+        opacity: 0.7;
+        font-size: 0.8em;
+        letter-spacing: 0.1px;
         margin-right: 5px;
+        font-weight: 500;
     }
 `
 
 export const InputStyled = styled.input`
     display: block;
-    height: 20px;
+    height: 30px;
     width: 300px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    padding-left: 10px;
+
+    &[type="text"]:focus {
+        outline: 1.5px solid lightgrey;
+    }
 
     &[type="submit"] {
         height: 30px;
         width: 100px;
         margin: 0 auto;
         margin-top: 10px;
+        padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 500;
+
+        &:active {
+            transform: scale(0.95);
+        }
     }
 `
