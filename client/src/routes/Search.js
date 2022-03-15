@@ -66,7 +66,7 @@ const Search = () => {
     return (
         <Container>
             <HeaderStyled>
-                <h1>Search Database</h1>
+                <h1>SEARCH DATABASE</h1>
             </HeaderStyled>
             <Flex>
                 <FormStyled onSubmit={submitData} autoComplete='off' >
@@ -88,7 +88,7 @@ const Search = () => {
                     />
                     <InputStyled 
                         type='submit'
-                        value='Submit'
+                        value='SUBMIT'
                     />
                 </FormStyled>
                 {formSubmitted && <DataView {...responseData} />}

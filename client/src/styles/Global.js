@@ -37,14 +37,15 @@ export const Flex = styled.div`
 
 export const HeaderStyled = styled.header`
 
-    background-color: #D49696;
+    background-color: #5188ff;
     width: 100%;
     border-radius: 0 0 10px 10px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5em;
 
     h1 {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 1.8em;
         margin: 0;
         padding: 20px 0;
         color: white;
@@ -69,21 +70,27 @@ export const InputStyled = styled.input`
     height: 30px;
     width: 300px;
     border-radius: 5px;
-    border: 1px solid lightgrey;
     padding-left: 10px;
-
-    &[type="text"]:focus {
-        outline: 1.5px solid lightgrey;
+    
+    &[type="text"] {
+        border: 1px solid lightgrey;
+        
+        &:focus {
+            outline: 1.5px solid lightgrey;
+        }
     }
 
     &[type="submit"] {
-        height: 30px;
-        width: 100px;
+        width: 120px;
         margin: 0 auto;
         margin-top: 10px;
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 500;
+        color: whitesmoke;
+        border-radius: 3px;
+        border: none;
+        background-color: #ED431C;
 
         &:active {
             transform: scale(0.95);

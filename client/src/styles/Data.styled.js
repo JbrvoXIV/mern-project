@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const DataStyled = styled.section`
     
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 50px;
     
     table {
-        margin-top: 20px;
         border: 1px solid black;
         border-collapse: collapse;
         color: black;
@@ -18,11 +18,13 @@ export const DataStyled = styled.section`
         }
 
         th {
-            background-color: rgb(110, 180, 180);
+            background-color: #5188ff;
+            color: whitesmoke;
+            font-size: 0.8em;
         }
 
         td {
-            background-color: rgb(150,212,212);
+            background-color: whitesmoke;
         }
 
     }

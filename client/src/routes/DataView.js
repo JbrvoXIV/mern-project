@@ -9,13 +9,13 @@ const DataView = ({ name, email, birthday, favMovie, favFood, favColor, favHobby
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Birthday</th>
-                            <th>Favorite Movie</th>
-                            <th>Favorite Food</th>
-                            <th>Favorite Color</th>
-                            <th>Favorite Hobby</th>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>BIRTHDAY</th>
+                            <th>FAVORITE MOVIE</th>
+                            <th>FAVORITE FOOD</th>
+                            <th>FAVORITE COLOR</th>
+                            <th>FAVORITE HOBBY</th>
                         </tr>
                     </thead>
                     <tbody>
