@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import { Container, Flex, GlobalStyle } from './styles/Global';
+import { Container, Flex } from './styles/Global';
 
 export const api = axios.create({
     baseURL: 'http://localhost:5000'
@@ -12,7 +12,6 @@ const App = () => {
 
     return (
         <>
-            <GlobalStyle />
             <Container>
                 <Flex >
                     <Link to='/search'>Search the database</Link>

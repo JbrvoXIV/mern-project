@@ -2,21 +2,15 @@ const Users = require('../models/users.model.js');
 
 // get user depending on request
 const getUsersController = async (req, res) => {
-
-    if(res.fullName) {
-        try {
-            const requestedUser = await Users.find({ name: res.fullName });
-            return res.json(requestedUser);
-        } catch (error) {
-            return res.status(500).json({ message: error.message });
-        }
-    } 
-        
     try {
-        const firstUser = await Users.findOne();
-        return res.json(firstUser);
+        const requestedUser = await Users.findOne({ name: res.fullName });
+        if(requestedUser) {
+            return res.status(200).json(requestedUser);
+        } else {
+            return res.status(404).json({ success: false, message: 'User Not Found' });
+        }
     } catch (error) {
-        return res.status(500).json({ success: false, message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 }
 
@@ -26,7 +20,11 @@ const createUsersController = async (req, res) => {
         const newUser = await Users.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            birthday: req.body.birthday,
+            favMovie: req.body.favMovie,
+            favFood: req.body.favFood,
+            favColor: req.body.favColor,
+            favHobby: req.body.favHobby
         });
         res.status(201).json(newUser);
     } catch (error) {

@@ -18,7 +18,9 @@ const parseName = (req, res, next) => {
         
         res.fullName = fullName;
     }
-    
+    if(req.query.email) {
+        res.email = req.query.email;
+    }
     next();
 }
 

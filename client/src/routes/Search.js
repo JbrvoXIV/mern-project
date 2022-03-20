@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { api } from '../App';
 import DataView from './DataView';
 
-import { Container, Flex } from "../styles/Global";
+import { Container, Flex, FormStyled, HeaderStyled, InputStyled } from "../styles/Global";
 
 const Search = () => {
 
@@ -14,15 +14,19 @@ const Search = () => {
     const [responseData, setResponseData] = useState({
         name: '',
         email: '',
-        password: ''
+        birthday: '',
+        favMovie: '',
+        favFood: '',
+        favColor: '',
+        favHobby: ''
     });
 
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const submitData = e => {        
         e.preventDefault();
+        
         async function getData() {
-
             try {
                 const response = await api.get('/users/api', {
                     params: {
@@ -30,24 +34,23 @@ const Search = () => {
                         lname: data.lname.toLowerCase()
                     }
                 });
-    
-                const requestedData = await response.data;
                 setFormSubmitted(true);
-
-                if(requestedData[0]) {
+                const requestedData = await response.data;
+                if(requestedData) {
                     return setResponseData({
-                        name: requestedData[0].name,
-                        email: requestedData[0].email,
-                        password: requestedData[0].password
+                        name: requestedData.name,
+                        email: requestedData.email,
+                        birthday: requestedData.birthday,
+                        favMovie: requestedData.favMovie,
+                        favFood: requestedData.favFood,
+                        favColor: requestedData.favColor,
+                        favHobby: requestedData.favHobby
                     });
                 }
-
-                return setResponseData(oldData => ({
-                    ...oldData,
-                    name: undefined
-                }));
             } catch (error) {
                 console.log(error.message);
+                setFormSubmitted(true);
+                return setResponseData({ name: null });
             }
         }
         getData();
@@ -63,31 +66,33 @@ const Search = () => {
 
     return (
         <Container>
+            <HeaderStyled>
+                <h1>SEARCH DATABASE</h1>
+            </HeaderStyled>
             <Flex>
-                <h1>In Testing component</h1>
-                <form onSubmit={submitData} autoComplete='off'>
-                    <label htmlFor='fname'>First Name:</label>
-                    <input
+                <FormStyled onSubmit={submitData} autoComplete='off' >
+                    <label htmlFor='fname'>FIRST NAME</label>
+                    <InputStyled
                         onChange={handleChange}
                         type='text'
                         id='fname'
                         required={true}
                         value={data.fname}
-                    /><br />
-                    <label htmlFor='lname'>Last Name:</label>
-                    <input
+                    />
+                    <label htmlFor='lname'>LAST NAME</label>
+                    <InputStyled
                         onChange={handleChange}
                         type='text'
                         id='lname'
                         required={true}
                         value={data.lname}
-                    /><br />
-                    <input 
-                        type='submit'
-                        value='Submit'
                     />
-                </form>
-                <DataView data={responseData} submitted={formSubmitted}/>
+                    <InputStyled 
+                        type='submit'
+                        value='SUBMIT'
+                    />
+                </FormStyled>
+                {formSubmitted && <DataView {...responseData} />}
             </Flex>
         </Container>
     );

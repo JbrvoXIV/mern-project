@@ -9,14 +9,15 @@ const usersSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        lowercase: true,
         validate: [isEmail, 'Incorrect email format'],
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    }
-});
+    birthday: { type: Date, required: true },
+    favMovie: { type: String, required: true },
+    favFood: { type: String, required: true },
+    favColor: { type: String, required: true },
+    favHobby: { type: String, required: true },
+}, { versionKey: false });
 
 module.exports = mongoose.model('Users', usersSchema, 'users');
-

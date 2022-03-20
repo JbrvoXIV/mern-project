@@ -1,29 +1,37 @@
 import React from 'react';
+import { DataStyled } from '../styles/Data.styled.js';
 
-const DataView = (props) => {
-
-    const name = props.data.name;
-    const email = props.data.email;
-    const password = props.data.password;
-    const submitted = props.submitted;
-
-    const style = {
-        border: name ? '2px solid black' : 'none',
-        opacity: 0
-    }
+const DataView = ({ name, email, birthday, favMovie, favFood, favColor, favHobby }) => {
 
     const displayData = () => {
         if(name) {
-            style.opacity = 1;
             return (
-                <ul>
-                    <li>Name: {name}</li>
-                    <li>Email: {email}</li>
-                    <li>Password: {password}</li>
-                </ul>                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>BIRTHDAY</th>
+                            <th>FAVORITE MOVIE</th>
+                            <th>FAVORITE FOOD</th>
+                            <th>FAVORITE COLOR</th>
+                            <th>FAVORITE HOBBY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{name}</td>
+                            <td>{email}</td>
+                            <td>{birthday.split('T')[0]}</td>
+                            <td>{favMovie}</td>
+                            <td>{favFood}</td>
+                            <td>{favColor}</td>
+                            <td>{favHobby}</td>
+                        </tr>
+                    </tbody>
+                </table>
             )
         } else {
-            style.opacity = 1;
             return (
                 <p>USER NOT FOUND</p>
             )
@@ -31,9 +39,9 @@ const DataView = (props) => {
     }
 
     return (
-        <section style={style}>
-            {submitted && displayData()}
-        </section>
+        <DataStyled>
+            {displayData()}
+        </DataStyled>
     );
 }
 
