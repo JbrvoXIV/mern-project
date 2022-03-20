@@ -90,7 +90,12 @@ export const InputStyled = styled.input`
         color: whitesmoke;
         border-radius: 3px;
         border: none;
-        background-color: #ED431C;
+        background-color: rgb(237, 67, 28);
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(217, 47, 8);
+        }
 
         &:active {
             transform: scale(0.95);

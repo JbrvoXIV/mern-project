@@ -25,8 +25,7 @@ const Search = () => {
 
     const submitData = e => {        
         e.preventDefault();
-        setFormSubmitted(true);
-
+        
         async function getData() {
             try {
                 const response = await api.get('/users/api', {
@@ -35,6 +34,7 @@ const Search = () => {
                         lname: data.lname.toLowerCase()
                     }
                 });
+                setFormSubmitted(true);
                 const requestedData = await response.data;
                 if(requestedData) {
                     return setResponseData({
@@ -49,6 +49,7 @@ const Search = () => {
                 }
             } catch (error) {
                 console.log(error.message);
+                setFormSubmitted(true);
                 return setResponseData({ name: null });
             }
         }
