@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { api } from '../App';
 import DataView from './DataView';
 
-import { Container, Flex, FormStyled, HeaderStyled, InputStyled } from "../styles/Global";
+import { Container, Flex, FormStyled, HeaderStyled, InputStyled, LabelStyled } from "../styles/Global";
 
 const Search = () => {
 
@@ -18,7 +18,8 @@ const Search = () => {
         favMovie: '',
         favFood: '',
         favColor: '',
-        favHobby: ''
+        favHobby: '',
+        relationship: ''
     });
 
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -44,7 +45,8 @@ const Search = () => {
                         favMovie: requestedData.favMovie,
                         favFood: requestedData.favFood,
                         favColor: requestedData.favColor,
-                        favHobby: requestedData.favHobby
+                        favHobby: requestedData.favHobby,
+                        relationship: requestedData.relationship
                     });
                 }
             } catch (error) {
@@ -71,7 +73,7 @@ const Search = () => {
             </HeaderStyled>
             <Flex>
                 <FormStyled onSubmit={submitData} autoComplete='off' >
-                    <label htmlFor='fname'>FIRST NAME</label>
+                    <LabelStyled htmlFor='fname'>FIRST NAME</LabelStyled>
                     <InputStyled
                         onChange={handleChange}
                         type='text'
@@ -79,7 +81,7 @@ const Search = () => {
                         required={true}
                         value={data.fname}
                     />
-                    <label htmlFor='lname'>LAST NAME</label>
+                    <LabelStyled htmlFor='lname'>LAST NAME</LabelStyled>
                     <InputStyled
                         onChange={handleChange}
                         type='text'

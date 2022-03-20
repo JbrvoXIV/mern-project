@@ -57,11 +57,7 @@ export const FormStyled = styled.form`
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     label {
-        opacity: 0.7;
-        font-size: 0.8em;
-        letter-spacing: 0.1px;
-        margin-right: 5px;
-        font-weight: 500;
+
     }
 `
 
@@ -70,14 +66,12 @@ export const InputStyled = styled.input`
     height: 30px;
     width: 300px;
     border-radius: 5px;
-    padding-left: 10px;
+    text-indent: 5px;
+    border: 1px solid lightgrey;
+    margin-bottom: 10px;
     
-    &[type="text"] {
-        border: 1px solid lightgrey;
-        
-        &:focus {
-            outline: 1.5px solid lightgrey;
-        }
+    &:focus {
+        outline: 1.5px solid lightgrey;
     }
 
     &[type="submit"] {
@@ -100,5 +94,26 @@ export const InputStyled = styled.input`
         &:active {
             transform: scale(0.95);
         }
+    }
+
+    &[type="radio"] {
+        display: inline-block;
+        margin: 0;
+        margin-right: 5px;
+        vertical-align: middle;
+        height: fit-content;
+        width: fit-content;
+    }
+`
+export const LabelStyled = styled.label`
+    opacity: 0.7;
+    font-size: 0.8em;
+    letter-spacing: 0.1px;
+    margin-right: 5px;
+    font-weight: 500;
+    width: fit-content;
+
+    &[for="family"] {
+        float: right;
     }
 `
