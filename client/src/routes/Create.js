@@ -1,30 +1,63 @@
 import React, { useState } from 'react';
 import { api } from '../App';
+import DataView from './DataView.js';
 
 import { Container, Flex, FormStyled, HeaderStyled, InputStyled, LabelStyled } from '../styles/Global';
 
+const userData = {
+    fname: '',
+    lname: '',
+    email: '',
+    birthday: '',
+    favMovie: '',
+    favFood: '',
+    favColor: '',
+    favHobby: '',
+    relationship: ''    
+}
+
+const responseData = {
+    name: '',
+    email: '',
+    birthday: '',
+    favMovie: '',
+    favFood: '',
+    favColor: '',
+    favHobby: '',
+    relationship: ''
+}
+
 const Create = () => {
 
-    const [data, setData] = useState({
-        fname: '',
-        lname: '',
-        email: '',
-        birthday: '',
-        favMovie: '',
-        favFood: '',
-        favColor: '',
-        favHobby: ''
-    });
+    const [data, setData] = useState(userData);
+    const [requestedData, setRequestedData] = useState(responseData);
+
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     const submitData = e => {
         e.preventDefault();
 
         const sendData = async () => {
-            try {
-                await api.post('/users/api', {...data});
-                console.log('Data submmitted succesfully!');
+            try { 
+                const response = await api.post('/users/api', {
+                    name: `${data.fname} ${data.lname}`,
+                    email: data.email,
+                    birthday: new Date(data.birthday),
+                    favMovie: data.favMovie,
+                    favFood: data.favFood,
+                    favColor: data.favColor,
+                    favHobby: data.favHobby,
+                    relationship: data.relationship
+                });
+                const requestedData = await response.data;
+                if(requestedData) {
+                    setFormSubmitted(true);
+                    return setRequestedData({...requestedData});
+                }
             } catch (error) {
                 console.log(error.message);
+                setFormSubmitted(true);
+                return setRequestedData({ name: null });
             }
         }
         sendData();
@@ -47,7 +80,7 @@ const Create = () => {
         }
     }
 
-    console.log(data.relationship);
+    console.log(data);
 
     return (
         <Container>
@@ -143,6 +176,7 @@ const Create = () => {
                     </LabelStyled>
                     <InputStyled type='submit' value='SUBMIT' />
                 </FormStyled>
+                {formSubmitted && <DataView {...requestedData} />}
             </Flex>
         </Container>
     )

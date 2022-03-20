@@ -18,7 +18,7 @@ const usersSchema = new mongoose.Schema({
     favFood: { type: String, required: true },
     favColor: { type: String, required: true },
     favHobby: { type: String, required: true },
-    relationship: { type: String, enum: ['friend', 'family'], required: true }
+    relationship: { type: String, enum: ['Friend', 'Family'], required: true }
 }, { versionKey: false });
 
 module.exports = mongoose.model('Users', usersSchema, 'users');

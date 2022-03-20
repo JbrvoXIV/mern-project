@@ -24,7 +24,8 @@ const createUsersController = async (req, res) => {
             favMovie: req.body.favMovie,
             favFood: req.body.favFood,
             favColor: req.body.favColor,
-            favHobby: req.body.favHobby
+            favHobby: req.body.favHobby,
+            relationship: req.body.relationship
         });
         res.status(201).json(newUser);
     } catch (error) {
