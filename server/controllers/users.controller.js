@@ -38,7 +38,7 @@ const updateUserController = async (req, res) => {
     try {
         const updatedUser = await Users.findOneAndUpdate(
             { name: res.fullName }, 
-            { name: req.body.name }, 
+            { ...req.body },
             { new: true }
         );
         res.status(201).json(updatedUser);
