@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     #root {
-        height: 100vh;
+        height: 100%;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 
     html,
     body {
+        height: 100%;
         margin: 0;
         padding: 0;
     }
@@ -55,9 +56,10 @@ export const HeaderStyled = styled.header`
 export const FormStyled = styled.form`
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
 
-    label {
-
+    fieldset {
+        margin-bottom: 20px;
     }
 `
 

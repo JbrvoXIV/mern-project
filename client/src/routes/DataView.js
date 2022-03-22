@@ -1,10 +1,10 @@
 import React from 'react';
 import { DataStyled } from '../styles/Data.styled.js';
 
-const DataView = ({ name, email, birthday, favMovie, favFood, favColor, favHobby, relationship }) => {
+const DataView = (props) => {
 
     const displayData = () => {
-        if(name) {
+        if(props.name) {
             return (
                 <table>
                     <thead>
@@ -21,14 +21,14 @@ const DataView = ({ name, email, birthday, favMovie, favFood, favColor, favHobby
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{name}</td>
-                            <td>{email}</td>
-                            <td>{birthday.split('T')[0]}</td>
-                            <td>{favMovie}</td>
-                            <td>{favFood}</td>
-                            <td>{favColor}</td>
-                            <td>{favHobby}</td>
-                            <td>{relationship}</td>
+                            <td>{props.name}</td>
+                            <td>{props.email}</td>
+                            <td>{props.birthday.split('T')[0]}</td>
+                            <td>{props.favMovie}</td>
+                            <td>{props.favFood}</td>
+                            <td>{props.favColor}</td>
+                            <td>{props.favHobby}</td>
+                            <td>{props.relationship}</td>
                         </tr>
                     </tbody>
                 </table>

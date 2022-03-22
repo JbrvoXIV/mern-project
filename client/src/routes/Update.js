@@ -11,6 +11,7 @@ const newUserState = {
     newFavMovie: '',
     newFavFood: '',
     newFavColor: '',
+    newFavHobby: '',
     newRelationship: ''
 }
 
@@ -35,11 +36,32 @@ const Update = () => {
 
     const submitData = e => {
         e.preventDefault();
+        const patchData = { 
+            name: `${newUserInfo.newFName} ${newUserInfo.newLName}`.trim(), // trims whitespace to length 0 if newFName and newLName are not words
+            email: newUserInfo.newEmail,
+            birthday: newUserInfo.newBirthday ? new Date(newUserInfo.newBirthday) : '',
+            favMovie: newUserInfo.newFavMovie,
+            favFood: newUserInfo.newFavFood,
+            favColor: newUserInfo.newFavColor,
+            favHobby: newUserInfo.newFavHobby,
+            relationship: newUserInfo.newRelationship
+        };
+
+        for(const key in patchData) { // delete empty object values
+            if(patchData[key] === '') {
+                delete patchData[key];
+            }
+        }
 
         const sendData = async () => {
             try {
-                const response = await api.patch(`/users/api?fname=${userToUpdate.fname}&lname=${userToUpdate.lname}`, {
+                const request = await api.patch(`/users/api?fname=${userToUpdate.fname}&lname=${userToUpdate.lname}`, {
+                    ...patchData
                 });
+                const response = request.data;
+                if(response) {
+                    console.log('Succesfully updated user!');
+                }
             } catch (error) {
                 console.log(error.message);
             }
@@ -118,6 +140,7 @@ const Update = () => {
                     </fieldset>
 
                 </FormStyled>
+
             </Flex>
         </Container>
     );

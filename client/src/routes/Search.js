@@ -38,16 +38,7 @@ const Search = () => {
                 setFormSubmitted(true);
                 const requestedData = await response.data;
                 if(requestedData) {
-                    return setResponseData({
-                        name: requestedData.name,
-                        email: requestedData.email,
-                        birthday: requestedData.birthday,
-                        favMovie: requestedData.favMovie,
-                        favFood: requestedData.favFood,
-                        favColor: requestedData.favColor,
-                        favHobby: requestedData.favHobby,
-                        relationship: requestedData.relationship
-                    });
+                    return setResponseData({ ...requestedData });
                 }
             } catch (error) {
                 console.log(error.message);
