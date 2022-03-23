@@ -20,20 +20,6 @@ const Update = () => {
     const [userToUpdate, setUserToUpdate] = useState({ fname: '', lname: '' });
     const [newUserInfo, setNewUserInfo] = useState(newUserState);
 
-    const handleChange = e => {
-        const idVal = e.target.id;
-        const name = e.target.name;
-
-        if(!name) {
-            if(idVal === 'fname' || idVal === 'lname') {
-                return setUserToUpdate(oldData => ({ ...oldData, [idVal]: e.target.value }));
-            }
-            return setNewUserInfo(oldData => ({ ...oldData, [idVal]: e.target.value }));
-        } else {
-            return setNewUserInfo(oldData => ({ ...oldData, [name]: e.target.value }));
-        }
-    }
-
     const submitData = e => {
         e.preventDefault();
         const patchData = { 
@@ -67,6 +53,20 @@ const Update = () => {
             }
         }
         sendData();
+    }
+
+    const handleChange = e => {
+        const idVal = e.target.id;
+        const name = e.target.name;
+
+        if(!name) { // update correct state depending on input
+            if(idVal === 'fname' || idVal === 'lname') {
+                return setUserToUpdate(oldData => ({ ...oldData, [idVal]: e.target.value }));
+            }
+            return setNewUserInfo(oldData => ({ ...oldData, [idVal]: e.target.value }));
+        } else {
+            return setNewUserInfo(oldData => ({ ...oldData, [name]: e.target.value }));
+        }
     }
 
     return (

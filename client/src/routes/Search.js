@@ -4,23 +4,22 @@ import DataView from './DataView';
 
 import { Container, Flex, FormStyled, HeaderStyled, InputStyled, LabelStyled } from "../styles/Global";
 
+const responseFormat = {
+    name: '',
+    email: '',
+    birthday: '',
+    favMovie: '',
+    favFood: '',
+    favColor: '',
+    favHobby: '',
+    relationship: ''
+}
+
 const Search = () => {
 
-    const [data, setData] = useState({
-        fname: '',
-        lname: ''
-    });
+    const [data, setData] = useState({ fname: '', lname: '' });
 
-    const [responseData, setResponseData] = useState({
-        name: '',
-        email: '',
-        birthday: '',
-        favMovie: '',
-        favFood: '',
-        favColor: '',
-        favHobby: '',
-        relationship: ''
-    });
+    const [responseData, setResponseData] = useState(responseFormat);
 
     const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -29,12 +28,7 @@ const Search = () => {
         
         async function getData() {
             try {
-                const response = await api.get('/users/api', {
-                    params: {
-                        fname: data.fname.toLowerCase(),
-                        lname: data.lname.toLowerCase()
-                    }
-                });
+                const response = await api.get('/users/api', { params: { ...data } });
                 setFormSubmitted(true);
                 const requestedData = await response.data;
                 if(requestedData) {
@@ -51,10 +45,7 @@ const Search = () => {
 
     const handleChange = e => {
         const idVal = e.target.id;
-        setData(oldData => ({
-            ...oldData,
-            [idVal]: e.target.value
-        }));
+        setData(oldData => ({ ...oldData, [idVal]: e.target.value }));
     }
 
     return (
@@ -64,26 +55,26 @@ const Search = () => {
             </HeaderStyled>
             <Flex>
                 <FormStyled onSubmit={submitData} autoComplete='off' >
-                    <LabelStyled htmlFor='fname'>FIRST NAME</LabelStyled>
-                    <InputStyled
-                        onChange={handleChange}
-                        type='text'
-                        id='fname'
-                        required={true}
-                        value={data.fname}
-                    />
-                    <LabelStyled htmlFor='lname'>LAST NAME</LabelStyled>
-                    <InputStyled
-                        onChange={handleChange}
-                        type='text'
-                        id='lname'
-                        required={true}
-                        value={data.lname}
-                    />
-                    <InputStyled 
-                        type='submit'
-                        value='SUBMIT'
-                    />
+                    <fieldset>
+                        <legend>ENTER USER INFO TO SEARCH</legend>
+                        <LabelStyled htmlFor='fname'>FIRST NAME</LabelStyled>
+                        <InputStyled
+                            onChange={handleChange}
+                            type='text'
+                            id='fname'
+                            required={true}
+                            value={data.fname}
+                        />
+                        <LabelStyled htmlFor='lname'>LAST NAME</LabelStyled>
+                        <InputStyled
+                            onChange={handleChange}
+                            type='text'
+                            id='lname'
+                            required={true}
+                            value={data.lname}
+                        />
+                        <InputStyled type='submit' value='SUBMIT' />
+                    </fieldset>
                 </FormStyled>
                 {formSubmitted && <DataView {...responseData} />}
             </Flex>
