@@ -39,8 +39,7 @@ const Create = () => {
 
         const sendData = async () => {
             try { 
-                const response = await api.post('/users/api', {
-                    name: `${data.fname} ${data.lname}`,
+                const response = await api.post(`/users/api?fname=${data.fname}&lname=${data.lname}`, {
                     email: data.email,
                     birthday: new Date(data.birthday),
                     favMovie: data.favMovie,

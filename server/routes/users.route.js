@@ -27,7 +27,7 @@ const parseName = (req, res, next) => { // convert incoming first name and last 
 
 router.get('/api', parseName, getUsersController);
 
-router.post('/api', createUsersController);
+router.post('/api', parseName, createUsersController);
 
 router.patch('/api', parseName, updateUserController);
 

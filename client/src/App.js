@@ -13,7 +13,7 @@ const App = () => {
     return (
         <>
             <Container>
-                <Flex >
+                <Flex>
                     <Link to='/search'>Search the database</Link>
                     <Link to='/create'>Create a user</Link>
                     <Link to='/update'>Update a current user</Link>
