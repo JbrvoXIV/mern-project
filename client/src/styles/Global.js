@@ -1,10 +1,25 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
+export const theme = {
+    backgroundColors: {
+        main: '#5188ff',
+        secondary: '#ED431C'
+    },
+    fontWeight: {
+        regular: '400',
+        medium: '500',
+        bold: '700'
+    }
+}
+
 export const GlobalStyle = createGlobalStyle`
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
     * {
         box-sizing: border-box;
     }
-
+    
     #root {
         min-height: 100%;
         width: 100%;
@@ -12,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         background-color: rgb(245, 245, 245);
     }
-
+    
     html,
     body {
         height: 100%;
@@ -23,10 +38,10 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
-    width: 1000px;
+    width: 1400px;
     max-width: 100%;
     height: 100%;
-    padding: 0;
+    padding: 0 20px;
     margin: 0 auto;
 `
 
