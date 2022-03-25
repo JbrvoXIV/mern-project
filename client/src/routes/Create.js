@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { api } from '../App';
-import DataView from './DataView.js';
+import DataTable from './DataTable.js';
 
 import { Container, Flex, FormStyled, HeaderStyled, InputStyled, LabelStyled } from '../styles/Global';
 
@@ -178,7 +178,7 @@ const Create = () => {
                         <InputStyled type='submit' value='SUBMIT' />
                     </fieldset>
                 </FormStyled>
-                {formSubmitted && <DataView {...requestedData} />}
+                {formSubmitted && <DataTable {...requestedData} />}
             </Flex>
         </Container>
     )

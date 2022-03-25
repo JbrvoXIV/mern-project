@@ -1,8 +1,4 @@
 import App from './App';
-import Search from './routes/Search.js';
-import Create from './routes/Create.js';
-import Update from './routes/Update.js';
-import Delete from './routes/Delete.js';
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -15,10 +11,6 @@ render(
         <GlobalStyle />
         <Routes>
             <Route path='/' element={ <App /> } />
-            <Route path='/search' element={ <Search /> } />
-            <Route path='/create' element={ <Create /> } />
-            <Route path='/update' element={ <Update /> } />
-            <Route path='/delete' element={ <Delete /> } />
         </Routes>
     </BrowserRouter>,
     root

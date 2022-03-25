@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const DataStyled = styled.section`
     
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 100%;
+    background-color: black;
     margin-top: 50px;
     
     table {
+        width: 100%;
         border: 1px solid black;
         border-collapse: collapse;
         color: black;

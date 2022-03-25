@@ -4,7 +4,7 @@ export const NavBar = styled.nav`
     
     width: 100%;
     background-color: ${({ theme }) => theme.backgroundColors.main};
-    border-radius: 0 0 30% 30%;
+    border-radius: 0 0 15px 15px;
 
     h1 {
         font-size: 3em;

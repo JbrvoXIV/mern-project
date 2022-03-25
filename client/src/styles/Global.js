@@ -14,10 +14,9 @@ export const theme = {
 
 export const GlobalStyle = createGlobalStyle`
 
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
-
     * {
         box-sizing: border-box;
+        font-family: 'Montserrat';
     }
     
     #root {
@@ -38,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
+
     width: 1400px;
     max-width: 100%;
     height: 100%;
