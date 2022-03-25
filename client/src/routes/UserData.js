@@ -12,6 +12,7 @@ const UserData = (props) => {
             <td>{props.favColor}</td>
             <td>{props.favHobby}</td>
             <td>{props.relationship}</td>
+            <td></td>
         </tr>
     );
 }

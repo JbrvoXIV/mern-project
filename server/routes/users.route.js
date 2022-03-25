@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {
+    getAllUsersController,
     getUsersController, 
     createUsersController, 
     updateUserController, 
@@ -24,6 +25,8 @@ const parseName = (req, res, next) => { // convert incoming first name and last 
     }
     next();
 }
+
+router.get('/api', getAllUsersController);
 
 router.get('/api', parseName, getUsersController);
 

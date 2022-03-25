@@ -3,19 +3,17 @@ import styled from "styled-components";
 export const DataStyled = styled.section`
     
     width: 100%;
-    background-color: black;
     margin-top: 50px;
     
     table {
         width: 100%;
-        border: 1px solid black;
         border-collapse: collapse;
         color: black;
         
         th, td {
+            border-bottom: 1px solid black;
             padding: 10px;
-            border: 1px solid black;
-            min-width: 150px;
+            width: 150px;
             text-align: center;
         }
 
@@ -25,10 +23,31 @@ export const DataStyled = styled.section`
             font-size: 0.8em;
         }
 
+        /* th:last-child {
+            border: none;
+            width: 0;
+            opacity: 0;
+        } */
+
         td {
             background-color: whitesmoke;
         }
 
+        td:last-child {
+            background-color: black;
+            padding: 0;
+            border: none;
+            width: 0;
+            
+        }
+
+        tr {
+            &:hover {
+                td:last-child {
+                    width: 20px;
+                }
+            }
+        }
     }
 
     p {

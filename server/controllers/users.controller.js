@@ -1,5 +1,14 @@
 const Users = require('../models/users.model.js');
 
+const getAllUsersController = async (req, res) => {
+    try {
+        const users = await Users.find();
+        return res.status(200).json(users);
+    } catch (error) {
+        return res.status(404).json({ message: 'Could Not Load Users From Database' });
+    }
+}
+
 // get user depending on request
 const getUsersController = async (req, res) => {
     const requestedUser = await Users.findOne({ name: res.fullName });
@@ -45,7 +54,8 @@ const deleteUserController = async (req, res) => {
     }
 }
 
-module.exports = { 
+module.exports = {
+    getAllUsersController,
     getUsersController, 
     createUsersController, 
     updateUserController,
