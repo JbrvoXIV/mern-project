@@ -11,7 +11,7 @@ export const DataStyled = styled.section`
         width: calc(100% + 50px);
         border-collapse: collapse;
         color: black;
-        
+
         th, td {
             border-bottom: 1px solid black;
             padding: 10px;

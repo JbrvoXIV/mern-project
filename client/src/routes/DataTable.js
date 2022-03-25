@@ -7,10 +7,14 @@ const DataTable = () => {
 
     const data = useContext(DataContext);
 
-    const userRow = data.map(user => {
-        return ( <UserData key={user._id} {...user} /> )
-    });
+    const userFriends = data.filter(user => {
+        return user.relationship === 'Friend'
+    }).map(user => { return ( <UserData key={user._id} {...user} /> ) })
 
+    const userFamily = data.filter(user => {
+        return user.relationship === 'Family'
+    }).map(user => { return ( <UserData key={user._id} {...user} /> ) })
+    
     return (
         <DataStyled>
             <table>
@@ -27,7 +31,22 @@ const DataTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {userRow}
+                    {userFriends}
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>BIRTHDAY</th>
+                        <th>FAVORITE MOVIE</th>
+                        <th>FAVORITE FOOD</th>
+                        <th>FAVORITE COLOR</th>
+                        <th>FAVORITE HOBBY</th>
+                        <th>RELATIONSHIP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {userFamily}
                 </tbody>
             </table>
         </DataStyled>
