@@ -1,4 +1,5 @@
 import React from 'react';
+import { DeleteIcon, UpdateIcon } from '../styles/Data.styled.js'
 
 const UserData = (props) => {
 
@@ -12,7 +13,10 @@ const UserData = (props) => {
             <td>{props.favColor}</td>
             <td>{props.favHobby}</td>
             <td>{props.relationship}</td>
-            <td></td>
+            <td>
+                <UpdateIcon />
+                <DeleteIcon />
+            </td>
         </tr>
     );
 }
