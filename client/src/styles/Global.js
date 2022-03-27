@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export const theme = {
     backgroundColors: {
-        main: '#5188ff',
+        main: '#5188FF',
         secondary: '#ED431C'
     },
     fontWeight: {
@@ -53,19 +53,20 @@ export const Flex = styled.div`
 `
 
 export const HeaderStyled = styled.header`
-
-    background-color: #5188ff;
     width: 100%;
-    border-radius: 0 0 10px 10px;
-    text-align: center;
-    margin-bottom: 5em;
+    background-color: ${({ theme }) => theme.backgroundColors.main};
+    border-radius: 0 0 15px 15px;
 
     h1 {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 1.8em;
+        font-size: 3em;
+        font-weight: ${({ theme }) => theme.fontWeight.medium};
+        letter-spacing: 2px;
         margin: 0;
         padding: 20px 0;
+        text-align: center;
         color: white;
+        height: fit-content;
+        cursor: default;
     }
 `
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import UserData from './UserData.js';
 import { DataContext } from '../App.js';
-import { DataStyled } from '../styles/Data.styled.js';
+import { DataStyled, AddUserRow } from '../styles/Data.styled.js';
 
 const DataTable = () => {
 
@@ -32,6 +32,11 @@ const DataTable = () => {
                 </thead>
                 <tbody>
                     {userFriends}
+                    <AddUserRow>
+                        <td colSpan={8}>
+                            <button>ADD FRIEND</button>
+                        </td>
+                    </AddUserRow>
                 </tbody>
                 <thead>
                     <tr>
@@ -47,6 +52,11 @@ const DataTable = () => {
                 </thead>
                 <tbody>
                     {userFamily}
+                    <AddUserRow>
+                        <td colSpan={8}>
+                            <button>ADD FAMILY MEMBER</button>
+                        </td>
+                    </AddUserRow>
                 </tbody>
             </table>
         </DataStyled>

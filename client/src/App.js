@@ -4,7 +4,7 @@ import axios from "axios";
 import { ThemeProvider } from 'styled-components';
 import { Container, Flex, theme } from './styles/Global';
 
-import Nav from './components/Nav.js';
+import Header from './components/Header.js';
 import DataTable from './routes/DataTable.js';
 
 
@@ -34,7 +34,7 @@ const App = () => {
         <DataContext.Provider value={data}>
             <ThemeProvider theme={ theme } >
                 <Container>
-                    <Nav />
+                    <Header />
                     <Flex>
                         <DataTable />
                     </Flex>
