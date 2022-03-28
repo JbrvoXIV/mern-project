@@ -1,5 +1,6 @@
 const Users = require('../models/users.model.js');
 
+// get all users
 const getAllUsersController = async (req, res) => {
     try {
         const users = await Users.find();
@@ -9,14 +10,30 @@ const getAllUsersController = async (req, res) => {
     }
 }
 
-// get user depending on request
+// find and sort users depending on get params from FilterOptions component
 const getUsersController = async (req, res) => {
-    const requestedUser = await Users.findOne({ name: res.fullName });
-    if(requestedUser) {
-        return res.status(200).json(requestedUser);
-    } else {
-        return res.status(404).json({ message: 'User Not Found' });
-    }
+    return res.status(200).json({ message: 'received', value: req.body.value });
+    // try {
+    //     if(req.body === 'none') {
+    //         const nonFilteredUsers = await Users.find();
+    //         return res.status(200).json(nonFilteredUsers);
+    //     } else if(req.body.contains('increase')) {
+    //         const incFilteredUsers = await Users.find().sort({ name: 1 });
+    //         return res.status(200).json(incFilteredUsers);
+    //     } else {
+    //         const decFilteredUsers = await Users.find().sort({ name: -1 });
+    //         return res.status(200).json(decFilteredUsers);
+    //     }
+    // } catch(error) {
+    //     return res.status(400).json({ message: 'Could Not Complete Request' });
+    // }
+
+    // const requestedUser = await Users.findOne({ name: res.fullName });
+    // if(requestedUser) {
+    //     return res.status(200).json(requestedUser);
+    // } else {
+    //     return res.status(404).json({ message: 'User Not Found' });
+    // }
 }
 
 // create a single user
