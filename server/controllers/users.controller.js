@@ -12,21 +12,21 @@ const getAllUsersController = async (req, res) => {
 
 // find and sort users depending on get params from FilterOptions component
 const getUsersController = async (req, res) => {
-    return res.status(200).json({ message: 'received', value: req.body.value });
-    // try {
-    //     if(req.body === 'none') {
-    //         const nonFilteredUsers = await Users.find();
-    //         return res.status(200).json(nonFilteredUsers);
-    //     } else if(req.body.contains('increase')) {
-    //         const incFilteredUsers = await Users.find().sort({ name: 1 });
-    //         return res.status(200).json(incFilteredUsers);
-    //     } else {
-    //         const decFilteredUsers = await Users.find().sort({ name: -1 });
-    //         return res.status(200).json(decFilteredUsers);
-    //     }
-    // } catch(error) {
-    //     return res.status(400).json({ message: 'Could Not Complete Request' });
-    // }
+    const filterValue = req.query.filter;
+    try {
+        if(filterValue === 'none') {
+            const nonFilteredUsers = await Users.find();
+            return res.status(200).json(nonFilteredUsers);
+        } else if(filterValue.includes('ascending')) {
+            const incFilteredUsers = await Users.find().sort({ [filterValue.split('_')[0]]: 1 });
+            return res.status(200).json(incFilteredUsers);
+        } else {
+            const decFilteredUsers = await Users.find().sort({ [filterValue.split('_')[0]]: -1 });
+            return res.status(200).json(decFilteredUsers);
+        }
+    } catch(error) {
+        return res.status(400).json({ message: 'Could Not Complete Request' });
+    }
 
     // const requestedUser = await Users.findOne({ name: res.fullName });
     // if(requestedUser) {
