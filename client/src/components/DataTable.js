@@ -13,7 +13,7 @@ const DataTable = () => {
     const [userFriends, setUserFriends] = useState([]);
     const [userFamily, setUserFamily] = useState([]);
 
-    useEffect(() => {
+    useEffect(() => { // set initial state of all users in order of creation
         setUserFriends(
             data.filter(user => {
                 return user.relationship === 'Friend'
@@ -26,33 +26,30 @@ const DataTable = () => {
         );
     }, [data]);
 
-    const handleFilter = (e) => {
-        const data = { value: e.target.value };
-        console.log(data);
+    const handleFilter = (e, id) => {
         const sendFilter = async () => {
             try {
-                const request = await api.get('/users/api/filtered', data);
+                const request = await api.get(`/users/api/filtered?filter=${e.target.value}`);
                 const response = await request.data;
-                console.log(response);
-                // setUserFriends(
-                //     response.filter(user => {
-                //         return user.relationship === 'Friend'
-                //     }).map(user => { return( <UserData key={user._id} {...user} /> ) })
-                // );
+                if(id === 'Friends') {
+                    return setUserFriends(response.filter(user => {
+                            return user.relationship === 'Friend'
+                        })
+                        .map(user => { return( <UserData key={user._id} {...user} /> ) })
+                    );
+                } else {
+                    return setUserFamily(response.filter(user => {
+                            return user.relationship === 'Family'
+                        })
+                        .map(user => { return( <UserData key={user._id} {...user} /> ) })
+                    );
+                }     
             } catch (error) {
                 console.log(error.message);
             }
         }
         sendFilter();
     }
-
-    // const userFriends = data.filter(user => {
-    //     return user.relationship === 'Friend'
-    // }).map(user => { return ( <UserData key={user._id} {...user} /> ) })
-
-    // const userFamily = data.filter(user => {
-    //     return user.relationship === 'Family'
-    // }).map(user => { return ( <UserData key={user._id} {...user} /> ) })
     
     return (
         <DataStyled>
@@ -67,7 +64,7 @@ const DataTable = () => {
                         <th>FAVORITE COLOR</th>
                         <th>FAVORITE HOBBY</th>
                         <th>RELATIONSHIP</th>
-                        <FilterOptions handleFilter={handleFilter} />
+                        <FilterOptions handleFilter={handleFilter} id='Friends' />
                     </tr>
                 </thead>
                 <tbody>
@@ -88,6 +85,7 @@ const DataTable = () => {
                         <th>FAVORITE COLOR</th>
                         <th>FAVORITE HOBBY</th>
                         <th>RELATIONSHIP</th>
+                        <FilterOptions handleFilter={handleFilter} id='Family' />
                     </tr>
                 </thead>
                 <tbody>
