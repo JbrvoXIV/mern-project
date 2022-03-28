@@ -2,10 +2,9 @@ import React, { useState, useEffect, createContext } from 'react';
 import axios from "axios";
 
 import { ThemeProvider } from 'styled-components';
-import { Container, Flex, theme } from './styles/Global';
+import { Container, Flex, HeaderStyled, theme } from './styles/Global';
 
-import Header from './components/Header.js';
-import DataTable from './routes/DataTable.js';
+import DataTable from './components/DataTable.js';
 
 
 export const api = axios.create({
@@ -34,7 +33,9 @@ const App = () => {
         <DataContext.Provider value={data}>
             <ThemeProvider theme={ theme } >
                 <Container>
-                    <Header />
+                    <HeaderStyled>
+                        <h1>database.</h1>
+                    </HeaderStyled>
                     <Flex>
                         <DataTable />
                     </Flex>

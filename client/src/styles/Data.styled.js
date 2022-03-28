@@ -25,6 +25,16 @@ export const DataStyled = styled.section`
             font-size: 0.8em;
         }
 
+        th:nth-child(9) {
+            padding: 0;
+            transform: translateX(-50px);
+            border: none;
+            height: min-content;
+            width: 50px;
+            opacity: 0;
+            transition: opacity 400ms ease, transform 300ms ease;            
+        }
+
         td {
             background-color: whitesmoke;
             font-size: 0.90em;
@@ -48,6 +58,10 @@ export const DataStyled = styled.section`
                     opacity: 1;
                     transform: translateX(0);
                 }
+                th:nth-child(9) {
+                    opacity: 1;
+                    transform: translateX(0);                    
+                }
             }
         }
 
@@ -58,7 +72,7 @@ export const DataStyled = styled.section`
 `
 
 export const AddUserRow = styled.tr`
-    
+
     button {
         font-size: 0.85em;
         font-weight: ${({ theme }) => theme.fontWeight.medium};
@@ -68,6 +82,7 @@ export const AddUserRow = styled.tr`
         color: ${({ theme }) => theme.backgroundColors.secondary};
         border: 2px solid ${({ theme }) => theme.backgroundColors.secondary};
         border-radius: 5px;
+        cursor: pointer;
 
         &:hover {
             filter: brightness(90%);
