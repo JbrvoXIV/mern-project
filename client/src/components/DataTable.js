@@ -3,8 +3,9 @@ import { api, DataContext } from '../App.js';
 
 import UserData from './UserData.js';
 import FilterOptions from './FilterOptions.js';
+import AddUser from './AddUser.js';
 
-import { DataStyled, AddUserRow } from '../styles/Data.styled.js';
+import { DataStyled } from '../styles/Data.styled.js';
 
 const DataTable = () => {
 
@@ -69,11 +70,7 @@ const DataTable = () => {
                 </thead>
                 <tbody>
                     {userFriends}
-                    <AddUserRow>
-                        <td colSpan={8}>
-                            <button>ADD FRIEND</button>
-                        </td>
-                    </AddUserRow>
+                    <AddUser />
                 </tbody>
                 <thead>
                     <tr>
@@ -90,11 +87,7 @@ const DataTable = () => {
                 </thead>
                 <tbody>
                     {userFamily}
-                    <AddUserRow>
-                        <td colSpan={8}>
-                            <button>ADD FAMILY MEMBER</button>
-                        </td>
-                    </AddUserRow>
+                    <AddUser />
                 </tbody>
             </table>
         </DataStyled>
