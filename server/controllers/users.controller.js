@@ -32,7 +32,16 @@ const getUsersController = async (req, res) => {
 // create a single user
 const createUsersController = async (req, res) => {
     try {
-        const newUser = await Users.create({ name: res.fullName, ...req.body });
+        const newUser = await Users.create({
+            name: res.fullName,
+            email: req.body.email,
+            birthday: req.body.birthday,
+            favMovie: req.body.favMovie,
+            favFood: req.body.favFood,
+            favColor: req.body.favColor,
+            favHobby: req.body.favHobby,
+            relationship: req.body.relationship
+        });
         return res.status(201).json(newUser);
     } catch (error) {
         return res.status(400).json({ message: error.message });

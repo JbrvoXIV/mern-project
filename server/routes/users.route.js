@@ -10,19 +10,16 @@ const {
 } = require('../controllers/users.controller.js');
 
 
-const parseName = (req, res, next) => { // convert incoming first name and last name to correct capitilization
-    
-    if(req.query.fname && req.query.lname) {
-        let firstName = req.query.fname.toLowerCase();
-        firstName = req.query.fname.charAt(0).toUpperCase() + req.query.fname.slice(1);
-        
-        let lastName = req.query.lname.toLowerCase();
-        lastName = req.query.lname.charAt(0).toUpperCase() + req.query.lname.slice(1);
+const parseName = (req, res, next) => { // convert name to correct capitalization
 
-        const fullName = `${firstName} ${lastName}`;
-        
-        res.fullName = fullName;
-    }
+    let firstName = req.body.name.toLowerCase();
+    firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+
+    let lastName = req.body.name.toLowerCase();
+    lastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
+
+    res.fullName = `${firstName + lastName}`;
+
     next();
 }
 
