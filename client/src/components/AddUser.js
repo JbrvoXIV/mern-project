@@ -7,11 +7,17 @@ const AddUser = () => {
 
     const [createUser, setCreateUser] = useState(false);
 
+    const handleClick = val => {
+        setCreateUser(val);
+    }
+
+    console.log(createUser);
+
     return (
         <AddUserRow>
-            { createUser && <UserForm /> }
+            { createUser && <UserForm handleClick={handleClick} /> }
             { !createUser && <td colSpan={8}>
-                <button onClick={() => setCreateUser(true)}>ADD USER</button>
+                <button onClick={() => handleClick(true)}>ADD USER</button>
             </td> }
         </AddUserRow>
     );

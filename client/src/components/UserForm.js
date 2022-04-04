@@ -13,7 +13,7 @@ const user = {
     relationship: ''
 }
 
-const UserForm = () => {
+const UserForm = ({ handleClick }) => {
 
     const [userData, setUserData] = useState(user);
     const relationshipRef = useRef()
@@ -30,8 +30,9 @@ const UserForm = () => {
                 const request = await api.post('/users/api', {...userData});
                 const response = request.data;
                 if(response) {
-                    console.log('USER SUCCESFULLY CREATED');
-                }   
+                    console.log(response);
+                    return () => handleClick(false);
+                }
             } catch (error) {
                 console.log(error.message);
             }
@@ -46,8 +47,6 @@ const UserForm = () => {
             [idVal]: e.target.value
         }));
     }
-
-    console.log(userData);
 
     return (
         <>
