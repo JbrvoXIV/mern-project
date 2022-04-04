@@ -27,13 +27,6 @@ const getUsersController = async (req, res) => {
     } catch(error) {
         return res.status(400).json({ message: 'Could Not Complete Request' });
     }
-
-    // const requestedUser = await Users.findOne({ name: res.fullName });
-    // if(requestedUser) {
-    //     return res.status(200).json(requestedUser);
-    // } else {
-    //     return res.status(404).json({ message: 'User Not Found' });
-    // }
 }
 
 // create a single user

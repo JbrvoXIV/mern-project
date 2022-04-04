@@ -6,6 +6,7 @@ import FilterOptions from './FilterOptions.js';
 import AddUser from './AddUser.js';
 
 import { DataStyled } from '../styles/Data.styled.js';
+import AddUser from './AddUser.js';
 
 const DataTable = () => {
 
