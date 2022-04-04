@@ -83,7 +83,7 @@ export const FormStyled = styled.form`
 export const InputStyled = styled.input`
     display: block;
     height: 30px;
-    width: 300px;
+    width: 100%;
     border-radius: 5px;
     text-indent: 5px;
     border: 1px solid lightgrey;
