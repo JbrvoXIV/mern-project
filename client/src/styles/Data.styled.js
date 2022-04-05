@@ -8,14 +8,14 @@ export const DataStyled = styled.section`
     margin-top: 50px;
     
     table {
-        width: calc(100% + 50px);
+        width: calc(100% + 120px);
         border-collapse: collapse;
         color: black;
 
         th, td {
             border-bottom: 1px solid black;
             padding: 10px;
-            width: 150px;
+            min-width: 100px;
             cursor: default;
         }
         
@@ -46,7 +46,6 @@ export const DataStyled = styled.section`
             transform: translateX(-50px);
             border: none;
             height: min-content;
-            width: 50px;
             opacity: 0;
             transition: opacity 400ms ease, transform 300ms ease;
         }
@@ -56,7 +55,7 @@ export const DataStyled = styled.section`
             &:hover {
                 td:nth-child(9) {
                     opacity: 1;
-                    transform: translateX(0);
+                    transform: translateX(0px);
                 }
                 th:nth-child(9) {
                     opacity: 1;

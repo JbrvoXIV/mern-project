@@ -31,13 +31,13 @@ const UserForm = (props) => {
             try {
                 const request = await api.post('/users/api', {...userData});
                 const response = request.data;
+                if(response) {
+                    console.log(response);
+                }
                 props.handleClick();
                 forceRerender();
-                if(response) {
-                    return console.log(response);
-                }
             } catch (error) {
-                return console.log(error.message);
+                console.log(error.message);
             }
         }
         submitData();

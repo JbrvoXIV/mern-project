@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { api, ForceRerenderContext } from '../App.js';
 import { DeleteIcon, UpdateIcon } from '../styles/Data.styled.js'
 
 const UserData = (props) => {
+
+    const forceRerender = useContext(ForceRerenderContext);
+
+    const handleDelete = () => {
+        const deleteUser = async () => {
+            try {
+                const request = await api.delete(`/users/api/${props._id}`);
+                const response = request.data;
+                if(response) {
+                    console.log(response);
+                }
+                forceRerender();
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        deleteUser();
+    }
 
     return (
         <tr>
@@ -15,7 +34,7 @@ const UserData = (props) => {
             <td>{props.relationship}</td>
             <td>
                 <UpdateIcon />
-                <DeleteIcon />
+                <DeleteIcon onClick={handleDelete} />
             </td>
         </tr>
     );
