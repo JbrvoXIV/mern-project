@@ -12,13 +12,13 @@ const {
 
 const parseName = (req, res, next) => { // convert name to correct capitalization
 
-    let firstName = req.body.name.toLowerCase();
+    let firstName = req.body.name.split(" ")[0].toLowerCase();
     firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
 
-    let lastName = req.body.name.toLowerCase();
+    let lastName = req.body.name.split(" ")[1].toLowerCase();
     lastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
 
-    res.fullName = `${firstName + lastName}`;
+    res.fullName = `${firstName} ${lastName}`;
 
     next();
 }
