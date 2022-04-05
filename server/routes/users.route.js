@@ -31,6 +31,6 @@ router.post('/api', parseName, createUsersController);
 
 router.patch('/api', parseName, updateUserController);
 
-router.delete('/api', parseName, deleteUserController);
+router.delete('/api/:id', deleteUserController);
 
 module.exports = router;

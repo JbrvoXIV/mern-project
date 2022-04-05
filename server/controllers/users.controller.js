@@ -65,11 +65,11 @@ const updateUserController = async (req, res) => {
 // deletes a single user
 const deleteUserController = async (req, res) => {
     try {
-        const user = await Users.findOne({ name: res.fullName });
+        const user = await Users.findOne({ _id: req.params.id });
         await user.remove();
-        return res.status(200).json({ message: `Succesfully deleted user ${res.fullName}` });
+        return res.status(200).json({ message: `Succesfully deleted user` });
     } catch (error) {
-        return res.status(404).json({ message: `User ${res.fullName} was not found` });
+        return res.status(404).json({ message: `User was not found` });
     }
 }
 
