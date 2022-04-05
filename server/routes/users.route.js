@@ -29,7 +29,7 @@ router.get('/api/filtered', getUsersController);
 
 router.post('/api', parseName, createUsersController);
 
-router.patch('/api', parseName, updateUserController);
+router.patch('/api/:id', parseName, updateUserController);
 
 router.delete('/api/:id', deleteUserController);
 

@@ -52,8 +52,8 @@ const createUsersController = async (req, res) => {
 const updateUserController = async (req, res) => {
     try {
         const updatedUser = await Users.findOneAndUpdate(
-            { name: res.fullName }, 
-            { ...req.body },
+            { _id: req.params.id }, 
+            { ...req.body, name: res.fullName },
             { new: true }
         );
         return res.status(201).json(updatedUser);
