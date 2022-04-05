@@ -12,10 +12,16 @@ export const api = axios.create({
 });
 
 export const DataContext = createContext();
+export const ForceRerenderContext = createContext();
 
 const App = () => {
 
     const [data, setData] = useState([]);
+    const [rerender, setRerender] = useState(0);
+
+    const forceRerender = () => {
+        setRerender(oldValue => oldValue + 1);
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -27,20 +33,22 @@ const App = () => {
             }
         }
         getData();
-    }, []);
+    }, [rerender]);
 
     return (
         <DataContext.Provider value={data}>
-            <ThemeProvider theme={ theme } >
-                <Container>
-                    <HeaderStyled>
-                        <h1>database.</h1>
-                    </HeaderStyled>
-                    <Flex>
-                        <DataTable />
-                    </Flex>
-                </Container>
-            </ThemeProvider>
+            <ForceRerenderContext.Provider value={forceRerender}>
+                <ThemeProvider theme={ theme } >
+                    <Container>
+                        <HeaderStyled>
+                            <h1>database.</h1>
+                        </HeaderStyled>
+                        <Flex>
+                            <DataTable />
+                        </Flex>
+                    </Container>
+                </ThemeProvider>
+            </ForceRerenderContext.Provider>
         </DataContext.Provider>
     );
 }

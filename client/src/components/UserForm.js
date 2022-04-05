@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { api } from "../App";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { api, ForceRerenderContext } from "../App";
 import { InputStyled } from "../styles/Global";
 
 const user = {
@@ -13,28 +13,31 @@ const user = {
     relationship: ''
 }
 
-const UserForm = ({ handleClick }) => {
+const UserForm = (props) => {
 
     const [userData, setUserData] = useState(user);
-    const relationshipRef = useRef()
+    const relationshipRef = useRef();
+    const forceRerender = useContext(ForceRerenderContext);
 
     useEffect(() => {
         setUserData(oldData => ({ ...oldData, relationship: relationshipRef.current.value }));
     }, []);
 
+    
     const handleSubmit = e => {
         e.preventDefault();
-
+        
         const submitData = async () => {
             try {
                 const request = await api.post('/users/api', {...userData});
                 const response = request.data;
+                props.handleClick();
+                forceRerender();
                 if(response) {
-                    console.log(response);
-                    return () => handleClick(false);
+                    return console.log(response);
                 }
             } catch (error) {
-                console.log(error.message);
+                return console.log(error.message);
             }
         }
         submitData();
