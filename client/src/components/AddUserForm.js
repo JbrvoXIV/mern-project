@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { withTheme } from "styled-components";
+
 import { api, ForceRerenderContext } from "../App";
 import { AddUserRow } from "../styles/Data.styled";
 import { InputStyled } from "../styles/Global";
@@ -14,7 +16,7 @@ const user = {
     relationship: ''
 }
 
-const AddUser = () => {
+const AddUser = ({ id }) => {
 
     const [createUser, setCreateUser] = useState(false);    
     const [userData, setUserData] = useState(user);
@@ -63,7 +65,7 @@ const AddUser = () => {
             <AddUserRow>
                 { !createUser && 
                     <td colSpan={8}>
-                        <button onClick={handleClick}>ADD USER</button>
+                        <InputStyled type='submit' value='ADD USER' onClick={handleClick} />
                     </td> 
                 }
                 { createUser &&
@@ -90,7 +92,7 @@ const AddUser = () => {
                             <InputStyled type='text' id='favHobby' name='favHobby' value={userData.favHobby} onChange={handleChange} required={true} autoComplete='off' />
                         </td>
                         <td>
-                            <InputStyled ref={relationshipRef} type='text' id='relationship' name='relationship' value='Friend' readOnly={true} />
+                            <InputStyled ref={relationshipRef} type='text' id='relationship' name='relationship' value={id} readOnly={true} />
                         </td>
                     </>
                 }
@@ -99,6 +101,7 @@ const AddUser = () => {
                 <AddUserRow>
                     <td colSpan={8} style={{ paddingTop: 0 }}>
                         <InputStyled type='submit' value='SUBMIT' onClick={handleSubmit} />
+                        <InputStyled type='submit' value='EXIT' onClick={handleClick} />
                     </td>
                 </AddUserRow> 
             }
@@ -106,4 +109,5 @@ const AddUser = () => {
     );
 }
 
-export default AddUser;
+// export default AddUser;
+export default withTheme(AddUser);

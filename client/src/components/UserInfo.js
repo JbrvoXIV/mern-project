@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { api, ForceRerenderContext } from '../App.js';
 import { DeleteIcon, UpdateIcon, FadedRow } from '../styles/Data.styled.js';
-import UpdateUserForm from './UserUpdateForm.js';
+import UpdateUserForm from './UpdateUserForm.js';
 
 const UserData = (props) => {
 

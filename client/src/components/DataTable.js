@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { api, DataContext } from '../App.js';
 
-import UserData from './UserData.js';
+import UserData from './UserInfo.js';
 import FilterOptions from './FilterOptions.js';
-import AddUser from './AddUser.js';
+import AddUser from './AddUserForm.js';
 
 import { DataStyled, FadedHeader } from '../styles/Data.styled.js';
 
@@ -70,7 +70,7 @@ const DataTable = () => {
                 </thead>
                 <tbody>
                     {userFriends}
-                    <AddUser />
+                    <AddUser id='Friend' />
                 </tbody>
                 <thead>
                     <FadedHeader>
@@ -87,7 +87,7 @@ const DataTable = () => {
                 </thead>
                 <tbody>
                     {userFamily}
-                    <AddUser />
+                    <AddUser id='Family' />
                 </tbody>
             </table>
         </DataStyled>

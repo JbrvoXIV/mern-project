@@ -35,31 +35,8 @@ export const DataStyled = styled.section`
 `
 
 export const AddUserRow = styled.tr`
-
     td {
         border: none !important;
-    }
-
-    button {
-        font-size: 0.85em;
-        font-weight: ${({ theme }) => theme.fontWeight.medium};
-        width: 200px;
-        min-width: 120px;
-        height: 2.2em;
-        background-color: whitesmoke;
-        color: ${({ theme }) => theme.backgroundColors.secondary};
-        border: 2px solid ${({ theme }) => theme.backgroundColors.secondary};
-        border-radius: 5px;
-        cursor: pointer;
-
-        &:hover {
-            filter: brightness(90%);
-        }
-
-        &:active {
-            background-color: ${({ theme }) => theme.backgroundColors.secondary};
-            color: whitesmoke;
-        }
     }
 `
 
@@ -115,6 +92,11 @@ export const DeleteIcon = styled(TrashFill)`
     color: ${({ theme }) => theme.backgroundColors.secondary};
     width: 25px;
     height: 25px;
+    transition: transform 300ms; 
+
+    &:hover {
+        transform: scale(1.10);
+    }
 `
 
 export const UpdateIcon = styled(Update)`
@@ -123,4 +105,9 @@ export const UpdateIcon = styled(Update)`
     color: ${({ theme }) => theme.backgroundColors.secondary};
     width: 25px;
     height: 25px;
+    transition: transform 300ms; 
+
+    &:hover {
+        transform: scale(1.10);
+    }
 `

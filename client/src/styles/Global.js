@@ -3,6 +3,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 export const theme = {
     backgroundColors: {
         main: '#5188FF',
+        primary: 'rgb(237, 67, 28)',
+        primaryHover: 'rgb(217, 47, 8)',
         secondary: '#ED431C'
     },
     fontWeight: {
@@ -24,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         margin: 0;
         padding: 0;
-        background-color: rgb(245, 245, 245);
+        background-color: whitesmoke;
     }
     
     html,
@@ -94,34 +96,50 @@ export const InputStyled = styled.input`
     }
 
     &[type="submit"] {
+
+        text-indent: 0 !important;
+        margin: 5px auto;
+        font-size: 0.85em;
+        font-weight: ${({ theme }) => theme.fontWeight.medium};
         width: 200px;
         min-width: 120px;
-        margin: 0 auto;
-        padding: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 500;
-        color: whitesmoke;
-        border-radius: 3px;
-        border: none;
-        background-color: rgb(237, 67, 28);
+        height: 2.2em;
+        background-color: whitesmoke;
+        color: ${({ theme }) => theme.backgroundColors.secondary};
+        border: 2px solid ${({ theme }) => theme.backgroundColors.secondary};
+        border-radius: 5px;
         cursor: pointer;
 
         &:hover {
-            background-color: rgb(217, 47, 8);
+            filter: brightness(90%);
         }
 
         &:active {
-            transform: scale(0.95);
+            background-color: ${({ theme }) => theme.backgroundColors.secondary};
+            color: whitesmoke;
         }
-    }
 
-    &[type="radio"] {
-        display: inline-block;
-        margin: 0;
-        margin-right: 5px;
-        vertical-align: middle;
-        height: fit-content;
-        width: fit-content;
+        &[value="SUBMIT"] {
+            width: 200px;
+            min-width: 120px;
+            margin: 0 auto;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            color: whitesmoke;
+            border-radius: 3px;
+            border: none;
+            background-color: ${({ theme }) => theme.backgroundColors.primary };
+            cursor: pointer;
+    
+            &:hover {
+                background-color: ${({ theme }) => theme.backgroundColors.primary };
+            }
+    
+            &:active {
+                transform: scale(0.95);
+            }
+        }
     }
 `
 export const LabelStyled = styled.label`
