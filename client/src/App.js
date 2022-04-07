@@ -40,10 +40,10 @@ const App = () => {
             <ForceRerenderContext.Provider value={forceRerender}>
                 <ThemeProvider theme={ theme } >
                     <Container>
-                        <HeaderStyled>
-                            <h1>database.</h1>
-                        </HeaderStyled>
                         <Flex>
+                            <HeaderStyled>
+                                <h1>database.</h1>
+                            </HeaderStyled>
                             <DataTable />
                         </Flex>
                     </Container>

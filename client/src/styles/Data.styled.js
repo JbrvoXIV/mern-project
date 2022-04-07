@@ -8,9 +8,11 @@ export const DataStyled = styled.section`
     margin-top: 50px;
     
     table {
-        width: calc(100% + 120px);
+        width: 100%;
         border-collapse: collapse;
         color: black;
+        transform: translateX(50px);
+        text-align: center;
 
         th, td {
             border-bottom: 1px solid black;
@@ -25,43 +27,9 @@ export const DataStyled = styled.section`
             font-size: 0.8em;
         }
 
-        th:nth-child(9) {
-            padding: 0;
-            transform: translateX(-50px);
-            border: none;
-            height: min-content;
-            width: 50px;
-            opacity: 0;
-            transition: opacity 400ms ease, transform 300ms ease;            
-        }
-
         td {
             background-color: whitesmoke;
             font-size: 0.90em;
-        }
-
-        td:nth-child(9) {
-            background-color: rgba(0, 0, 0, 0);
-            padding: 0;
-            transform: translateX(-50px);
-            border: none;
-            height: min-content;
-            opacity: 0;
-            transition: opacity 400ms ease, transform 300ms ease;
-        }
-
-        tr {
-            text-align: center;
-            &:hover {
-                td:nth-child(9) {
-                    opacity: 1;
-                    transform: translateX(0px);
-                }
-                th:nth-child(9) {
-                    opacity: 1;
-                    transform: translateX(0);                    
-                }
-            }
         }
 
         tbody > tr:last-child > td { // remove border from button cell
@@ -90,6 +58,52 @@ export const AddUserRow = styled.tr`
         &:active {
             background-color: ${({ theme }) => theme.backgroundColors.secondary};
             color: whitesmoke;
+        }
+    }
+`
+
+export const FadedRow = styled.tr`
+
+    td:nth-child(9) {
+        background-color: rgba(0, 0, 0, 0);
+        padding: 0;
+        transform: translateX(-50px);
+        border: none;
+        height: min-content;
+        opacity: 0;
+        transition: opacity 400ms ease, transform 300ms ease;
+    }
+
+    &:hover {
+        td:nth-child(9) {
+            opacity: 1;
+            transform: translateX(-30px);
+        }
+    }
+`
+
+export const FadedHeader = styled.tr`
+
+    th {
+        background-color: ${({ theme }) => theme.backgroundColors.main};
+        color: whitesmoke;
+        font-size: 0.8em;
+    }
+
+    th:nth-child(9) {
+        padding: 0;
+        transform: translateX(-50px);
+        border: none;
+        height: min-content;
+        width: 50px;
+        opacity: 0;
+        transition: opacity 400ms ease, transform 300ms ease;
+    }
+
+    &:hover {
+        th:nth-child(9) {
+            opacity: 1;
+            transform: translateX(0);
         }
     }
 `

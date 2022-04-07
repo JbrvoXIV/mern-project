@@ -5,7 +5,7 @@ import UserData from './UserData.js';
 import FilterOptions from './FilterOptions.js';
 import AddUser from './AddUser.js';
 
-import { DataStyled } from '../styles/Data.styled.js';
+import { DataStyled, FadedHeader } from '../styles/Data.styled.js';
 
 const DataTable = () => {
 
@@ -56,7 +56,7 @@ const DataTable = () => {
         <DataStyled>
             <table>
                 <thead>
-                    <tr>
+                    <FadedHeader>
                         <th>NAME</th>
                         <th>EMAIL</th>
                         <th>BIRTHDAY</th>
@@ -66,14 +66,14 @@ const DataTable = () => {
                         <th>FAVORITE HOBBY</th>
                         <th>RELATIONSHIP</th>
                         <FilterOptions handleFilter={handleFilter} id='Friends' />
-                    </tr>
+                    </FadedHeader>
                 </thead>
                 <tbody>
                     {userFriends}
                     <AddUser />
                 </tbody>
                 <thead>
-                    <tr>
+                    <FadedHeader>
                         <th>NAME</th>
                         <th>EMAIL</th>
                         <th>BIRTHDAY</th>
@@ -83,7 +83,7 @@ const DataTable = () => {
                         <th>FAVORITE HOBBY</th>
                         <th>RELATIONSHIP</th>
                         <FilterOptions handleFilter={handleFilter} id='Family' />
-                    </tr>
+                    </FadedHeader>
                 </thead>
                 <tbody>
                     {userFamily}

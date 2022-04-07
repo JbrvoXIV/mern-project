@@ -1,14 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { api, ForceRerenderContext } from '../App.js';
-import { DeleteIcon, UpdateIcon } from '../styles/Data.styled.js';
+import { DeleteIcon, UpdateIcon, FadedRow } from '../styles/Data.styled.js';
 import UpdateUserForm from './UserUpdateForm.js';
 
 const UserData = (props) => {
 
     const [updateUser, setUpdateUser] = useState(false);
     const forceRerender = useContext(ForceRerenderContext);
-
-    
 
     const handleDelete = () => {
         const deleteUser = async () => {
@@ -33,7 +31,7 @@ const UserData = (props) => {
     return (
         <>
             {!updateUser ?
-                <tr>
+                <FadedRow>
                     <td>{props.name}</td>
                     <td>{props.email}</td>
                     <td>{props.birthday.split('T')[0]}</td>
@@ -46,7 +44,7 @@ const UserData = (props) => {
                         <UpdateIcon onClick={userUpdating} />
                         <DeleteIcon onClick={handleDelete} />
                     </td>
-                </tr>
+                </FadedRow>
             :
                 <tr>
                     <UpdateUserForm {...props} userUpdating={userUpdating}  />
