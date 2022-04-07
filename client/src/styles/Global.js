@@ -94,9 +94,9 @@ export const InputStyled = styled.input`
     }
 
     &[type="submit"] {
-        width: 120px;
+        width: 200px;
+        min-width: 120px;
         margin: 0 auto;
-        margin-top: 10px;
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 500;

@@ -15,7 +15,7 @@ export const DataStyled = styled.section`
         text-align: center;
 
         th, td {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid lightgray;
             padding: 10px;
             min-width: 100px;
             cursor: default;
@@ -31,19 +31,20 @@ export const DataStyled = styled.section`
             background-color: whitesmoke;
             font-size: 0.90em;
         }
-
-        tbody > tr:last-child > td { // remove border from button cell
-            border-bottom: none;
-        }
     }
 `
 
 export const AddUserRow = styled.tr`
 
+    td {
+        border: none !important;
+    }
+
     button {
         font-size: 0.85em;
         font-weight: ${({ theme }) => theme.fontWeight.medium};
-        min-width: 150px;
+        width: 200px;
+        min-width: 120px;
         height: 2.2em;
         background-color: whitesmoke;
         color: ${({ theme }) => theme.backgroundColors.secondary};
