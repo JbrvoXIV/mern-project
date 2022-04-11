@@ -32,7 +32,6 @@ export const GlobalStyle = createGlobalStyle`
     html,
     body {
         height: 100%;
-        position: relative;
         margin: 0;
         padding: 0;
     }
@@ -120,14 +119,9 @@ export const InputStyled = styled.input`
         }
 
         &[value="SUBMIT"] {
-            width: 200px;
-            min-width: 120px;
-            margin: 0 auto;
-            padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-weight: 500;
             color: whitesmoke;
-            border-radius: 3px;
             border: none;
             background-color: ${({ theme }) => theme.backgroundColors.primary };
             cursor: pointer;
@@ -140,17 +134,5 @@ export const InputStyled = styled.input`
                 transform: scale(0.95);
             }
         }
-    }
-`
-export const LabelStyled = styled.label`
-    opacity: 0.7;
-    font-size: 0.8em;
-    letter-spacing: 0.1px;
-    margin-right: 5px;
-    font-weight: 500;
-    width: fit-content;
-
-    &[for="family"] {
-        float: right;
     }
 `

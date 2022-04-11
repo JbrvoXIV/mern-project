@@ -8,17 +8,21 @@ export const DataStyled = styled.section`
     
     width: 100%;
     margin-top: 50px;
+    overflow-x: auto;
     
     table {
-        width: calc(100% + 100px);
+        margin: 0 auto;
+        width: 90%;
         border-collapse: collapse;
         color: black;
         text-align: center;
         
         th, td {
+            padding: 5px;
             border-bottom: 1px solid lightgray;
-            padding: 10px;
             cursor: default;
+            vertical-align: middle;
+            width: fit-content;
         }
         
         th {
@@ -29,7 +33,7 @@ export const DataStyled = styled.section`
         
         td {
             background-color: whitesmoke;
-            font-size: 0.90em;
+            font-size: 0.9em;
         }
         
         tr {
@@ -39,6 +43,9 @@ export const DataStyled = styled.section`
 `
 
 export const AddUserRow = styled.tr`
+
+    margin-bottom: 20px;
+
     td {
         border: none !important;
     }
@@ -122,7 +129,7 @@ export const UpdateIcon = styled(Update)`
     }
 `
 
-export const SubmitUpdateIcon = styled(CheckmarkSquareOutline)`
+export const SubmitIcon = styled(CheckmarkSquareOutline)`
     cursor: pointer;
     color: ${({ theme }) => theme.backgroundColors.secondary};
     width: 25px;
