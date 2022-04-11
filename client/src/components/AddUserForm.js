@@ -23,6 +23,10 @@ const AddUser = ({ id }) => {
     const relationshipRef = useRef();
     const forceRerender = useContext(ForceRerenderContext);
     
+    const resetUserData = () => {
+        setUserData({ ...user, relationship: relationshipRef.current.value });
+    }
+
     useEffect(() => {
         if(createUser)
             setUserData(oldData => ({ ...oldData, relationship: relationshipRef.current.value }));
@@ -39,8 +43,9 @@ const AddUser = ({ id }) => {
                 if(response) {
                     console.log(response);
                 }
-                handleClick();
+                resetUserData();
                 forceRerender();
+                handleClick();
             } catch (error) {
                 console.log(error.message);
             }

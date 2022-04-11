@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { TrashFill } from '@styled-icons/bootstrap/TrashFill';
 import { Update } from '@styled-icons/material-rounded/Update';
+import { CheckmarkSquareOutline } from '@styled-icons/evaicons-outline/CheckmarkSquareOutline'
+import { Cancel } from '@styled-icons/typicons/Cancel'
 
 export const DataStyled = styled.section`
     
@@ -8,16 +10,14 @@ export const DataStyled = styled.section`
     margin-top: 50px;
     
     table {
-        width: 100%;
+        width: calc(100% + 100px);
         border-collapse: collapse;
         color: black;
-        transform: translateX(50px);
         text-align: center;
-
+        
         th, td {
             border-bottom: 1px solid lightgray;
             padding: 10px;
-            min-width: 100px;
             cursor: default;
         }
         
@@ -26,10 +26,14 @@ export const DataStyled = styled.section`
             color: whitesmoke;
             font-size: 0.8em;
         }
-
+        
         td {
             background-color: whitesmoke;
             font-size: 0.90em;
+        }
+        
+        tr {
+            height: 40px;
         }
     }
 `
@@ -37,6 +41,12 @@ export const DataStyled = styled.section`
 export const AddUserRow = styled.tr`
     td {
         border: none !important;
+    }
+`
+
+export const UpdateUserRow = styled.tr`
+    td:nth-child(9) {
+        border-bottom: none;
     }
 `
 
@@ -106,6 +116,32 @@ export const UpdateIcon = styled(Update)`
     width: 25px;
     height: 25px;
     transition: transform 300ms; 
+
+    &:hover {
+        transform: scale(1.10);
+    }
+`
+
+export const SubmitUpdateIcon = styled(CheckmarkSquareOutline)`
+    cursor: pointer;
+    color: ${({ theme }) => theme.backgroundColors.secondary};
+    width: 25px;
+    height: 25px;
+    transition: transform 300ms;
+    float: left;
+
+    &:hover {
+        transform: scale(1.10);
+    }
+`
+
+export const CancelIcon = styled(Cancel)`
+    cursor: pointer;
+    color: ${({ theme }) => theme.backgroundColors.secondary};
+    width: 25px;
+    height: 25px;
+    transition: transform 300ms; 
+    float: left;
 
     &:hover {
         transform: scale(1.10);

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { api, ForceRerenderContext } from '../App.js';
-import { DeleteIcon, UpdateIcon, FadedRow } from '../styles/Data.styled.js';
+import { DeleteIcon, UpdateIcon, FadedRow, UpdateUserRow } from '../styles/Data.styled.js';
 import UpdateUserForm from './UpdateUserForm.js';
 
 const UserData = (props) => {
@@ -46,9 +46,9 @@ const UserData = (props) => {
                     </td>
                 </FadedRow>
             :
-                <tr>
+                <UpdateUserRow>
                     <UpdateUserForm {...props} userUpdating={userUpdating}  />
-                </tr>
+                </UpdateUserRow>
             }
         </>
     );

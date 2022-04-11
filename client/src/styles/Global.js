@@ -89,7 +89,7 @@ export const InputStyled = styled.input`
     border-radius: 5px;
     text-indent: 5px;
     border: 1px solid lightgrey;
-    margin-bottom: 10px;
+    padding: 0;
     
     &:focus {
         outline: 1.5px solid lightgrey;

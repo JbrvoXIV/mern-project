@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { api, ForceRerenderContext } from '../App';
+import { CancelIcon, SubmitUpdateIcon } from '../styles/Data.styled';
 import { InputStyled } from '../styles/Global';
 
 const UpdateUserForm = (props) => {
@@ -64,7 +65,8 @@ const UpdateUserForm = (props) => {
                 </select>
             </td>
             <td>
-                <InputStyled type='submit' value='SUBMIT' onClick={handleSubmit} />
+                <SubmitUpdateIcon onClick={handleSubmit} />
+                <CancelIcon onClick={() => props.userUpdating()} />
             </td>
         </>
     );
