@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { Overlay, ModalOverlay } from '../styles/Modal.styled';
+import { Overlay, ModalOverlay, Exit } from '../styles/Modal.styled';
 
 const Modal = () => {
 
@@ -8,7 +8,8 @@ const Modal = () => {
         <div>
             <Overlay>
                 <ModalOverlay>
-                    Modal
+                    <Exit>X</Exit>
+                    <div>CONTENT</div>
                 </ModalOverlay>
             </Overlay>
         </div>,

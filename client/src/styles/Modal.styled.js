@@ -21,3 +21,11 @@ export const ModalOverlay = styled.div`
     z-index: 3;
     background-color: whitesmoke;
 `;
+
+export const Exit = styled.span`
+    text-align: end;
+    display: block;
+    cursor: pointer;
+    background-color: gray;
+    padding: 5px;
+`;
