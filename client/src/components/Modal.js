@@ -8,7 +8,7 @@ const Modal = () => {
         <div>
             <Overlay>
                 <ModalOverlay>
-                    <Exit>X</Exit>
+                    <Exit><strong>X</strong></Exit>
                     <div>CONTENT</div>
                 </ModalOverlay>
             </Overlay>

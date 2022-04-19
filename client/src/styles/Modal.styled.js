@@ -23,9 +23,16 @@ export const ModalOverlay = styled.div`
 `;
 
 export const Exit = styled.span`
+
+    strong {
+        cursor: pointer;
+        display: inline-block;
+    }
+
     text-align: end;
     display: block;
-    cursor: pointer;
     background-color: gray;
     padding: 5px;
+    height: fit-content;
+    width: 100%;
 `;
