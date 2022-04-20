@@ -16,10 +16,11 @@ export const ModalOverlay = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 350px;
-    height: 300px;
-    border: 2px solid red;
+    height: 200px;
+    border: 2px solid ${({ theme }) => theme.backgroundColors.secondary};
     z-index: 3;
     background-color: whitesmoke;
+    border-radius: 0 0 8px 8px;
 `;
 
 export const Exit = styled.span`
@@ -31,8 +32,24 @@ export const Exit = styled.span`
 
     text-align: end;
     display: block;
-    background-color: gray;
+    background-color: ${({ theme }) => theme.backgroundColors.main};
     padding: 5px;
     height: fit-content;
     width: 100%;
+`;
+
+export const ModalContent = styled.div`
+    text-align: center;
+
+    p {
+        margin-top: 10%;
+        font-size: 0.85em;
+    }
+
+    & > div {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+    }
 `;

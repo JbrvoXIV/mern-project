@@ -12,7 +12,7 @@ const UpdateUserForm = (props) => {
 
     const handleSubmit = () => {
 
-        const submitPatchtData = async () => {
+        const submitPatchData = async () => {
             try {
                 const request = await api.patch(`/users/api/${updatedUser._id}`, {...updatedUser});
                 const response = await request.data;
@@ -25,7 +25,7 @@ const UpdateUserForm = (props) => {
                 console.log(error.message);
             }
         }
-        submitPatchtData();
+        submitPatchData();
     }
 
     const handleChange = e => {
@@ -36,9 +36,15 @@ const UpdateUserForm = (props) => {
         }));
     }
 
+    const handleModal = () => {
+        setSubmitUpdateUser(oldVal => !oldVal);
+    }
+
+    console.log(submitUpdateUser);
+
     return (
         <>
-            {submitUpdateUser && <Modal />}
+            {submitUpdateUser && <Modal handleModal={handleModal} handleSubmit={handleSubmit} />}
             <>
                 <td>
                     <InputStyled type='text' id='name' name='name' onChange={handleChange} value={updatedUser.name} />
@@ -68,7 +74,7 @@ const UpdateUserForm = (props) => {
                     </select>
                 </td>
                 <td>
-                    <SubmitIcon onClick={() => setSubmitUpdateUser(oldVal => !oldVal)} />
+                    <SubmitIcon onClick={handleModal} />
                     <CancelIcon onClick={() => props.userUpdating()} />
                 </td>
             </>
